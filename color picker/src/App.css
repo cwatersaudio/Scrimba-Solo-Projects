@@ -102,6 +102,13 @@
   background-color: #3e8e41;
 }
 
+/* Primary Bar */
+
+.primary--bar {
+  width: 550px;
+  height: 90px;
+}
+
 /* Color Swatches Styling */
 
 .swatch--container {
