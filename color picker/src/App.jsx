@@ -6,14 +6,15 @@ import ColorSwatch from "./components/ColorSwatch";
 function App() {
   const [colors, setColors] = React.useState({
     seedColor: "#000000",
-    swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"], //need to be set by API
+    swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"],
+    colorMode: "monochrome",
   });
 
   React.useEffect(() => {
     ///scheme{?hex,rgb,hsl,cmyk,format,mode,count
     const trimmedHex = colors.seedColor.slice(1);
     fetch(
-      `https://www.thecolorapi.com/scheme?hex=${trimmedHex}&format=json&mode=analogic&count=5`
+      `https://www.thecolorapi.com/scheme?hex=${trimmedHex}&format=json&mode=analogic-complement&count=5`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -50,7 +51,7 @@ function App() {
   });
   return (
     <>
-      <Navbar seedColor={colors.seedColor} updateSeedColor={updateSeedColor} />
+      <Navbar colors={colors} updateSeedColor={updateSeedColor} />
       <div className='swatch--container'>{colorSwatches}</div>
     </>
   );

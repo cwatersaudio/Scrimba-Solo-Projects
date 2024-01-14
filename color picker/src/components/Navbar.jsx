@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Navbar(props) {
-  const [tempSeed, setTempSeed] = React.useState(props.seedColor);
+  const [tempSeed, setTempSeed] = React.useState(props.colors.seedColor);
 
   function updateTempColor(event) {
     setTempSeed(event.target.value);
@@ -16,7 +16,8 @@ export default function Navbar(props) {
           onChange={updateTempColor}
         />
         <div id='colorDropdown' className='dropdown'>
-          <select className='select-menu-trigger dropbtn'></select>
+          //convert to menu with 8 options
+          <select className='select-menu-trigger dropbtn'> </select>
           <div className='color-options'>
             <a href='#' className='dropdown-content'>
               Link 1
