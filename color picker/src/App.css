@@ -107,13 +107,15 @@
 .swatch--container {
   display: grid;
   grid-template-columns: 110px 110px 110px 110px 110px;
-  grid-template-rows: 460px 46px;
+  grid-template-rows: 414px 46px;
+  border-radius: 6px;  
+
 }
 
 .swatch {
   display: grid;
   grid-template-columns: 1;
-  grid-template-rows: 460px 46px;
+  grid-template-rows: 414px 46px;
 }
 .hex--code--container {
   height: 46px;
@@ -122,6 +124,7 @@
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
   background: #1f2937;
   align-items: center;
+
 }
 
 .hex--code {

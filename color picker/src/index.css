@@ -1,7 +1,6 @@
 main {
-  display: flex;
-  width: 550px;
-  height: 550px;
+  width: 600px;
+  height: 600px;
   border-radius: 6px;
-  background-color: blueviolet;
+  margin: auto 0;
 }

@@ -51,8 +51,10 @@ function App() {
   });
   return (
     <>
+    <main>
       <Navbar colors={colors} updateSeedColor={updateSeedColor} />
       <div className='swatch--container'>{colorSwatches}</div>
+    </main>
     </>
   );
 }
