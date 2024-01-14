@@ -4,13 +4,19 @@ export default function Navbar() {
   return (
     <>
       <div className='nav--container'>
-        <div>Color Picker</div>
-        <div id='colorDropdown'>
-          <select className='select-menu-trigger'></select>
-          <div class='dropdown-content'>
-            <a href='#'>Link 1</a>
-            <a href='#'>Link 2</a>
-            <a href='#'>Link 3</a>
+        <input type='color' id='colorPicker' />
+        <div id='colorDropdown' className='dropdown'>
+          <select className='select-menu-trigger dropbtn'></select>
+          <div className='color-options'>
+            <a href='#' className='dropdown-content'>
+              Link 1
+            </a>
+            <a href='#' className='dropdown-content'>
+              Link 2
+            </a>
+            <a href='#' className='dropdown-content'>
+              Link 3
+            </a>
           </div>
         </div>
 
