@@ -1,10 +1,20 @@
 import React from "react";
 
 export default function Navbar(props) {
+  const [tempSeed, setTempSeed] = React.useState(props.seedColor);
+
+  function updateTempColor(event) {
+    setTempSeed(event.target.value);
+  }
   return (
     <>
       <div className='nav--container'>
-        <input type='color' id='colorPicker' onChange={props.updateSeedColor} />
+        <input
+          type='color'
+          id='colorPicker'
+          name='seedColor'
+          onChange={updateTempColor}
+        />
         <div id='colorDropdown' className='dropdown'>
           <select className='select-menu-trigger dropbtn'></select>
           <div className='color-options'>
@@ -20,7 +30,13 @@ export default function Navbar(props) {
           </div>
         </div>
 
-        <button className='scheme--button'>Get Color Scheme</button>
+        <button
+          className='scheme--button'
+          onClick={() => {
+            props.updateSeedColor(tempSeed);
+          }}>
+          Get Color Scheme
+        </button>
       </div>
     </>
   );
