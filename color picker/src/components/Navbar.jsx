@@ -13,14 +13,16 @@ export default function Navbar(props) {
           name='seedColor'
           onChange={props.updateTempColor}
         />
-        <Menu />
+        <Menu 
+        updateColorMode = {props.updateColorMode}
+        colorMode = {props.colors.colorMode}/>
 
         <button
-          className='scheme--button'
+          className='mode--button'
           onClick={() => {
             props.updateSeedColor(props.tempSeed);
           }}>
-          Get Color Scheme
+          Get Color Mode
         </button>
       </div>
     </>

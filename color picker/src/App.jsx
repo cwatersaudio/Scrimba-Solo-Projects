@@ -15,7 +15,7 @@ function App() {
     ///scheme{?hex,rgb,hsl,cmyk,format,mode,count
     const trimmedHex = colors.seedColor.slice(1);
     fetch(
-      `https://www.thecolorapi.com/scheme?hex=${trimmedHex}&format=json&mode=analogic-complement&count=4`
+      `https://www.thecolorapi.com/scheme?hex=${trimmedHex}&format=json&mode=${colors.colorMode}&count=4`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -24,9 +24,9 @@ function App() {
           return item.hex.value;
         });
         const newSwatch = [colors.seedColor,...colorSwatchAPI]
-        updateColorScheme(newSwatch);
+        updateColors(newSwatch);
       });
-  }, [colors.seedColor]);
+  }, [colors.seedColor, colors.colorMode]);
 
   function updateSeedColor(newSeed) {
     console.log(newSeed);
@@ -38,25 +38,44 @@ function App() {
     });
   }
 
-  function updateColorScheme(newScheme) {
+  function updateColors(newColors) {
     setColors((prevColors) => {
       return {
         ...prevColors,
-        swatches: newScheme,
+        swatches: newColors,
       };
     });
+  }
+
+  function updateColorMode(newMode) {
+    setColors(prevColors => {
+      return {
+        ...prevColors,
+        colorMode: newMode
+      }
+    })
+
   }
 
   function updateTempColor(event) {
     setTempSeed(event.target.value);
   }
   const colorSwatches = colors.swatches.map((item, index) => {
-    return <ColorSwatch  color={item} key={index}/>; //will eventually send hex
+    return <ColorSwatch  
+            color={item} 
+            key={index}
+            />; //will eventually send hex
   });
   return (
     <>
     <main>
-      <Navbar colors={colors} updateSeedColor={updateSeedColor} updateTempColor={updateTempColor} tempSeed = {tempSeed} />
+      <Navbar 
+      colors={colors} 
+      updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
+      updateTempColor={updateTempColor} 
+      tempSeed = {tempSeed} 
+      updateColorMode= {updateColorMode}
+      />
       <div className='swatch--container'>
         {colorSwatches}
       </div>

@@ -7,8 +7,9 @@ export default function Menu (props) {
       setOpen(!open);
     };
 
-    const handleMenuItem = () => { 
-        // send name to updateScheme in App
+    const handleMenuItem = (event) => { 
+        console.log(event.target.value)
+        props.updateColorMode(event.target.value)
         setOpen(false);
       };
     
@@ -32,10 +33,15 @@ export default function Menu (props) {
         <div>
             <Dropdown
                 open={open}
-                trigger={<button onClick={handleOpen}>Dropdown</button>}
+                trigger={<button onClick={handleOpen}>{props.colorMode}</button>}
                 menu={[
-                    <button onClick={handleMenuItem}>Menu 1</button>,
-                    <button onClick={handleMenuItem}>Menu 2</button>,
+                    <button onClick={handleMenuItem} name="monochrome" value="monochrome">Monochrome</button>,
+                    <button onClick={handleMenuItem} name="monochrome-light" value="monochrome-light">Monochrome-Light</button>,
+                    <button onClick={handleMenuItem} name="analogic" value="analogic">Analogic</button>,
+                    <button onClick={handleMenuItem} name="complement" value="complement">Complement</button>,
+                    <button onClick={handleMenuItem} name="analogic-complement" value="analogic-complement">Analogic-Complement</button>,
+                    <button onClick={handleMenuItem} name="triad" value="triad">Triad</button>,
+                    <button onClick={handleMenuItem} name="quad" value="quad">Quad</button>
                 ]}
             />
       </div>
