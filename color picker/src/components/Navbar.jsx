@@ -1,4 +1,5 @@
 import React from "react";
+import Menu from "./Menu";
 
 export default function Navbar(props) {
 
@@ -12,21 +13,7 @@ export default function Navbar(props) {
           name='seedColor'
           onChange={props.updateTempColor}
         />
-        <div id='colorDropdown' className='dropdown'>
-          //convert to menu with 8 options
-          <select className='select-menu-trigger dropbtn'> </select>
-          <div className='color-options'>
-            <a href='#' className='dropdown-content'>
-              Link 1
-            </a>
-            <a href='#' className='dropdown-content'>
-              Link 2
-            </a>
-            <a href='#' className='dropdown-content'>
-              Link 3
-            </a>
-          </div>
-        </div>
+        <Menu />
 
         <button
           className='scheme--button'
