@@ -50,8 +50,8 @@ function App() {
   function updateTempColor(event) {
     setTempSeed(event.target.value);
   }
-  const colorSwatches = colors.swatches.map((item) => {
-    return <ColorSwatch  color={item} />; //will eventually send hex
+  const colorSwatches = colors.swatches.map((item, index) => {
+    return <ColorSwatch  color={item} key={index}/>; //will eventually send hex
   });
   return (
     <>
