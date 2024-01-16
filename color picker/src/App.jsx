@@ -85,3 +85,16 @@ function App() {
 }
 
 export default App;
+
+
+
+//To DO:
+
+// - hover styles for buttons
+// -make dropdown menu trigger prettier (see Figma)
+// - add little arrow to trigger
+// -center hex codes
+// - import Inter
+// -Check alignment of dropdown
+// - add animation to dropdown 
+// - add 'copied' message to colors

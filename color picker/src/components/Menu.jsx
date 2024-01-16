@@ -36,6 +36,7 @@ export default function Menu (props) {
                 trigger={<button onClick={handleOpen}>{props.colorMode}</button>}
                 menu={[
                     <button onClick={handleMenuItem} name="monochrome" value="monochrome">Monochrome</button>,
+                    <button onClick={handleMenuItem} name="monochrome-dark" value="monochrome-dark">Monochrome-Dark</button>,
                     <button onClick={handleMenuItem} name="monochrome-light" value="monochrome-light">Monochrome-Light</button>,
                     <button onClick={handleMenuItem} name="analogic" value="analogic">Analogic</button>,
                     <button onClick={handleMenuItem} name="complement" value="complement">Complement</button>,
