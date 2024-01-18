@@ -66,20 +66,26 @@ function App() {
             key={index}
             />;
   });
+
+  console.log(colors.swatches.toString())
   return (
     <>
-    <main>
-      <Navbar 
-      colors={colors} 
-      updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
-      updateTempColor={updateTempColor} 
-      tempSeed = {tempSeed} 
-      updateColorMode= {updateColorMode}
-      />
-      <div className='swatch--container'>
-        {colorSwatches}
+    <div className="app--canvas"
+    style={{background: `linearGradient(0.25turn,${colors.swatches.toString()})`}}
+    >
+      <div className="app--container">
+        <Navbar 
+        colors={colors} 
+        updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
+        updateTempColor={updateTempColor} 
+        tempSeed = {tempSeed} 
+        updateColorMode= {updateColorMode}
+        />
+        <div className='swatch--container'>
+          {colorSwatches}
+        </div>
       </div>
-    </main>
+    </div>
     </>
   );
 }

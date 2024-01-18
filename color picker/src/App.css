@@ -1,3 +1,14 @@
+.app--canvas {
+  width: 100vw;
+  height: 100vh;
+
+}
+
+.app--container {
+  width: 600px;
+  height: 600px;
+  margin: 0 auto;
+}
 /* Nav Styling */
 
 .nav--container {
@@ -117,9 +128,11 @@ list-style: none;
 /* Color Swatches Styling */
 
 .swatch--container {
+  width: 550px;
   display: grid;
   grid-template-columns: 110px 110px 110px 110px 110px;
   grid-template-rows: 414px 46px;
+  background: #1f2937;
   border-radius: 6px;  
 
 }
@@ -134,9 +147,7 @@ list-style: none;
   width: 110px;
   color: #d5d4d8;
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
-  background: #1f2937;
   align-items: center;
-
 }
 
 .hex--code {
