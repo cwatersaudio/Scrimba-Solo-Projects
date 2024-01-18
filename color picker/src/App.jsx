@@ -64,7 +64,7 @@ function App() {
     return <ColorSwatch  
             color={item} 
             key={index}
-            />; //will eventually send hex
+            />;
   });
   return (
     <>
