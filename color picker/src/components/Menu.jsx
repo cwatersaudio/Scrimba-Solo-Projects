@@ -12,7 +12,7 @@ export default function Menu (props) {
         props.updateColorMode(event.target.value)
         setOpen(false);
       };
-    
+
     const Dropdown = ({ open, trigger, menu }) => {
     return (
         <div className="dropdown">

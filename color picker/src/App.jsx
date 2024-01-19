@@ -5,7 +5,7 @@ import ColorSwatch from "./components/ColorSwatch";
 
 function App() {
   const [colors, setColors] = React.useState({
-    seedColor: "#000000",
+    seedColor: "#31DDBB",
     swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"],
     colorMode: "monochrome",
   });
@@ -28,8 +28,8 @@ function App() {
       });
   }, [colors.seedColor, colors.colorMode]);
 
-  function updateSeedColor(newSeed) {
-    console.log(newSeed);
+  function updateSeedColor(event) {
+    const newSeed = event.target.value
     setColors((prevColors) => {
       return {
         ...prevColors,
@@ -71,7 +71,7 @@ function App() {
   return (
     <>
     <div className="app--canvas"
-    style={{background: `linearGradient(0.25turn,${colors.swatches.toString()})`}}
+    style={{background: `linear-gradient(0.25turn,${colors.swatches.toString()})`}}
     >
       <div className="app--container">
         <Navbar 
@@ -100,7 +100,6 @@ export default App;
 // -make dropdown menu trigger prettier (see Figma)
 // - add little arrow to trigger
 // -center hex codes
-// - import Inter
 // -Check alignment of dropdown
 // - add animation to dropdown 
 // - add 'copied' message to colors
