@@ -7,7 +7,7 @@ function App() {
   const [colors, setColors] = React.useState({
     seedColor: "#31DDBB",
     swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"],
-    colorMode: "monochrome",
+    colorMode: "triad",
   });
   const [tempSeed, setTempSeed] = React.useState(colors.seedColor);
 
@@ -28,15 +28,15 @@ function App() {
       });
   }, [colors.seedColor, colors.colorMode]);
 
-  function updateSeedColor(event) {
-    const newSeed = event.target.value
-    setColors((prevColors) => {
-      return {
-        ...prevColors,
-        seedColor: newSeed,
-      };
-    });
-  }
+  // function updateSeedColor(event) {
+  //   const newSeed = event.target.value
+  //   setColors((prevColors) => {
+  //     return {
+  //       ...prevColors,
+  //       seedColor: newSeed,
+  //     };
+  //   });
+  // }
 
   function updateColors(newColors) {
     setColors((prevColors) => {
@@ -47,19 +47,17 @@ function App() {
     });
   }
 
-  function updateColorMode(newMode) {
-    setColors(prevColors => {
-      return {
-        ...prevColors,
-        colorMode: newMode
-      }
-    })
+  // function updateColorMode(newMode) {
+  //   setColors(prevColors => {
+  //     return {
+  //       ...prevColors,
+  //       colorMode: newMode
+  //     }
+  //   })
 
-  }
+  // }
 
-  function updateTempColor(event) {
-    setTempSeed(event.target.value);
-  }
+
 
   function handleChange(event) {
    const {name, value} = event.target
@@ -67,7 +65,7 @@ function App() {
     setColors(prevColors => {
       return {
         ...prevColors,
-        [prevColors.name]: value
+        [name]: value
       }
     })
   }
@@ -87,10 +85,9 @@ function App() {
         <div className="app--container">
           <Navbar 
           colors={colors} 
-          updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
-          updateTempColor={updateTempColor} 
+          // updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
           tempSeed = {tempSeed} 
-          updateColorMode= {updateColorMode}
+          // updateColorMode= {updateColorMode}
           handleChange = {handleChange}
           />
           <div className='swatch--container'>
@@ -115,3 +112,4 @@ export default App;
 // -Check alignment of dropdown
 // - add animation to dropdown 
 // - add 'copied' message to colors
+// - box shadow for app

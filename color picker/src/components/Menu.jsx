@@ -9,7 +9,7 @@ export default function Menu (props) {
 
     const handleMenuItem = (event) => { 
         console.log(event.target.value)
-        props.updateColorMode(event.target.value)
+        props.handleChange(event)
         setOpen(false);
       };
 
@@ -35,14 +35,14 @@ export default function Menu (props) {
                 open={open}
                 trigger={<button onClick={handleOpen}>{props.colorMode}</button>}
                 menu={[
-                    <button onClick={handleMenuItem} name="monochrome" value="monochrome">Monochrome</button>,
-                    <button onClick={handleMenuItem} name="monochrome-dark" value="monochrome-dark">Monochrome-Dark</button>,
-                    <button onClick={handleMenuItem} name="monochrome-light" value="monochrome-light">Monochrome-Light</button>,
-                    <button onClick={handleMenuItem} name="analogic" value="analogic">Analogic</button>,
-                    <button onClick={handleMenuItem} name="complement" value="complement">Complement</button>,
-                    <button onClick={handleMenuItem} name="analogic-complement" value="analogic-complement">Analogic-Complement</button>,
-                    <button onClick={handleMenuItem} name="triad" value="triad">Triad</button>,
-                    <button onClick={handleMenuItem} name="quad" value="quad">Quad</button>
+                    <button onClick={handleMenuItem} name="colorMode" value="monochrome">Monochrome</button>,
+                    <button onClick={handleMenuItem} name="colorMode" value="monochrome-dark">Monochrome-Dark</button>,
+                    <button onClick={handleMenuItem} name="colorMode" value="monochrome-light">Monochrome-Light</button>,
+                    <button onClick={handleMenuItem} name="colorMode" value="analogic">Analogic</button>,
+                    <button onClick={handleMenuItem} name="colorMode" value="complement">Complement</button>,
+                    <button onClick={handleMenuItem} name="colorMode" value="analogic-complement">Analogic-Complement</button>,
+                    <button onClick={handleMenuItem} name="colorMode" value="triad">Triad</button>,
+                    <button onClick={handleMenuItem} name="colorMode" value="quad">Quad</button>
                 ]}
             />
       </div>
