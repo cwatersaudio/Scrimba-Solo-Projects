@@ -13,12 +13,15 @@ export default function ColorSwatch(props) {
           className='color--block'
           style={{ backgroundColor: props.color }}
           onClick={copyText}
-        ></div>
+        >
+           <div className="copied--bubble">Copied to Clipboard!</div>
+        </div>
         <div className='hex--code--container'>
           <div className='hex--code'>
             <span>{props.color}</span>
           </div>
         </div>
+       
       </div>
     </>
   );

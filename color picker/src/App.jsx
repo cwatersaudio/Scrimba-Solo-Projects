@@ -112,4 +112,3 @@ export default App;
 // -Check alignment of dropdown
 // - add animation to dropdown 
 // - add 'copied' message to colors
-// - box shadow for app
