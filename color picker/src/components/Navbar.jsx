@@ -17,15 +17,10 @@ export default function Navbar(props) {
         <Menu 
         // updateColorMode = {props.updateColorMode}
         colorMode = {props.colors.colorMode}
-        handleChange={props.handleChange}/>
+        handleChange={props.handleChange}
+        />
 
-        <button
-          className='mode--button'
-          onClick={() => {
-            props.updateSeedColor(props.tempSeed);
-          }}>
-          Get Color Mode
-        </button>
+        
       </div>
     </>
   );
