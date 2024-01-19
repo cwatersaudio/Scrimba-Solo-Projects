@@ -60,6 +60,18 @@ function App() {
   function updateTempColor(event) {
     setTempSeed(event.target.value);
   }
+
+  function handleChange(event) {
+   const {name, value} = event.target
+   console.log(name,value)
+    setColors(prevColors => {
+      return {
+        ...prevColors,
+        [prevColors.name]: value
+      }
+    })
+  }
+
   const colorSwatches = colors.swatches.map((item, index) => {
     return <ColorSwatch  
             color={item} 
@@ -67,25 +79,25 @@ function App() {
             />;
   });
 
-  console.log(colors.swatches.toString())
   return (
     <>
-    <div className="app--canvas"
-    style={{background: `linear-gradient(0.25turn,${colors.swatches.toString()})`}}
-    >
-      <div className="app--container">
-        <Navbar 
-        colors={colors} 
-        updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
-        updateTempColor={updateTempColor} 
-        tempSeed = {tempSeed} 
-        updateColorMode= {updateColorMode}
-        />
-        <div className='swatch--container'>
-          {colorSwatches}
+      <div className="app--canvas"
+        style={{background: `linear-gradient(0.25turn,${colors.swatches.toString()})`}}
+      >
+        <div className="app--container">
+          <Navbar 
+          colors={colors} 
+          updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
+          updateTempColor={updateTempColor} 
+          tempSeed = {tempSeed} 
+          updateColorMode= {updateColorMode}
+          handleChange = {handleChange}
+          />
+          <div className='swatch--container'>
+            {colorSwatches}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 }

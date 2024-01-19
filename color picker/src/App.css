@@ -158,3 +158,7 @@ list-style: none;
   font-weight: 500;
   padding: 12px 28px;
 }
+
+.swatch:hover { 
+  /* find a way to emphasize hovered swatch */
+}

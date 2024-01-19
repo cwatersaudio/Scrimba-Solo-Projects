@@ -11,8 +11,8 @@ export default function Navbar(props) {
           type='color'
           id='colorPicker'
           name='seedColor'
-          value={props.colors.seedColor}
-          onChange={props.updateSeedColor}
+          // value={props.colors.seedColor}
+          onChange={props.handleChange}
         />
         <Menu 
         updateColorMode = {props.updateColorMode}
