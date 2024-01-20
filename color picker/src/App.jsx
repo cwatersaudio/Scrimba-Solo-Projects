@@ -80,7 +80,7 @@ function App() {
   return (
     <>
       <div className="app--canvas"
-        style={{background: `linear-gradient(0.25turn,${colors.swatches.toString()})`}}
+        style={{background: `linear-gradient(0.25turn,${colors.swatches.reverse().toString()})`}}
       >
         <div className="app--container">
           <Navbar 
@@ -105,10 +105,6 @@ export default App;
 
 //To DO:
 
-// - hover styles for buttons
-// -make dropdown menu trigger prettier (see Figma)
-// - add little arrow to trigger
 // -center hex codes
 // -Check alignment of dropdown
 // - add animation to dropdown 
-// - add 'copied' message to colors
