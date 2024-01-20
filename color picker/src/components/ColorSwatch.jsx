@@ -27,9 +27,9 @@ function copyText() {
            >{copyBubbleText}</div>
         </div>
         <div className='hex--code--container'>
-          <div className='hex--code'>
-            <span>{props.color}</span>
-          </div>
+          
+            <span className='hex--code'>{props.color}</span>
+          
         </div>
        
       </div>
