@@ -2,8 +2,11 @@ import React from "react";
 
 export default function ColorSwatch(props) {
 
+
+  let copyBubbleText = "Copy to clipboard?"
   function copyText() {
     navigator.clipboard.writeText(props.color)
+    copyBubbleText="Copied!"
 
   }
   return (
@@ -12,9 +15,11 @@ export default function ColorSwatch(props) {
         <div
           className='color--block'
           style={{ backgroundColor: props.color }}
-          onClick={copyText}
+          
         >
-           <div className="copied--bubble">Copied to Clipboard!</div>
+           <div className="copied--bubble"
+           onClick={copyText}
+           >{copyBubbleText}</div>
         </div>
         <div className='hex--code--container'>
           <div className='hex--code'>

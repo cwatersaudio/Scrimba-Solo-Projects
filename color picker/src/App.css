@@ -142,6 +142,7 @@ list-style: none;
   display: grid;
   grid-template-columns: 1;
   grid-template-rows: 414px 46px;
+  transition: all .5s ease-in;
 }
 .hex--code--container {
   height: 46px;
@@ -160,9 +161,7 @@ list-style: none;
   padding: 12px 28px;
 }
 
-.swatch:hover { 
-  /* find a way to emphasize hovered swatch */
-}
+
 
 .color--block .copied--bubble {
   visibility: hidden;
@@ -180,8 +179,12 @@ list-style: none;
   transition: all .2s ease-in;
 }
 
-.color--block:active .copied--bubble{
+.color--block:hover .copied--bubble{
   opacity: 1;
   visibility: visible;
-  width: 120px;
+
+}
+
+.color--block:hover {
+width:130px;
 }
