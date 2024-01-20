@@ -2,12 +2,17 @@ import React from "react";
 
 export default function ColorSwatch(props) {
 
+const [copyBubbleText, setCopyBubbleText] = React.useState("Copy to clipboard?")
 
-  let copyBubbleText = "Copy to clipboard?"
-  function copyText() {
+function copyText() {
     navigator.clipboard.writeText(props.color)
-    copyBubbleText="Copied!"
+    setCopyBubbleText("Copied!")
+    setTimeout((resetText),1500)
+  }
 
+
+  function resetText() {
+      setCopyBubbleText("Copy to clipboard?")
   }
   return (
     <>
