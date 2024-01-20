@@ -18,7 +18,7 @@
   flex-shrink: 0;
   background: #1f2937;
   box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.15);
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -32,6 +32,7 @@
 }
 
 #colorDropdown {
+  
   display: flex;
   width: 312px;
   align-items: center;
@@ -77,12 +78,38 @@
 /* Dropdown Menu Styling */
 
 .dropdown {
+  margin: 12px;
   position: relative;
+}
+
+.trigger--container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: yellow;
+  width: 312px;
+  padding: 9px 13px;
+  align-items: center;
+  gap: 4px;
+  background-color: #1F293A ;
+  border-radius: 6px;
+  border: 1px solid #D1D5DB;
+}
+
+.menu--trigger {
+color: #D5D4D8;
+font-family: Inter;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px;
+
 }
 
 .menu {
   position: absolute;
-
+  display: flex;
+  flex-direction: column;
   width: 312px;
   padding: 9px 13px;
   align-items: center;
@@ -90,23 +117,23 @@
   border-radius: 6px;
 border: 1px solid var(--gray-300, #D1D5DB);
 background: var(--Menu-colors-Unselected, #1F293A);
+list-style: none;
 
 /* shadow/sm */
 box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
-.menu > li {
+.menu--item > li {
   margin: 0;
-  list-style: none;
 
   background-color: #1F2937;
 }
 
-.menu > li:hover {
+.menu--item > li:hover {
   background-color: #3D4B60;
 }
 
-.menu > li > button {
+.menu--item > li > button {
   width: 100%;
   height: 100%;
   text-align: left;

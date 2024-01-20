@@ -33,7 +33,7 @@ export default function Menu (props) {
         <div>
             <Dropdown
                 open={open}
-                trigger={<button onClick={handleOpen}>{props.colorMode}</button>}
+                trigger={<div className="trigger--container" onClick={handleOpen}><button  className="menu--trigger">{props.colorMode}</button><img src="./images/select-menu-selector.svg"></img></div>}
                 menu={[
                     <button onClick={handleMenuItem} name="colorMode" value="monochrome">Monochrome</button>,
                     <button onClick={handleMenuItem} name="colorMode" value="monochrome-dark">Monochrome-Dark</button>,
