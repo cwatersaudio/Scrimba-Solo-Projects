@@ -105,6 +105,5 @@ export default App;
 
 //To DO:
 
-// -center hex codes
 // -Check alignment of dropdown
 // - add animation to dropdown 
