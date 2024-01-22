@@ -191,4 +191,7 @@ list-style: none;
 
 .color--block:hover {
 border: 1px solid  #ffffff;
+width: 108px;
+height: 416px;
+
 }
