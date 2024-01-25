@@ -1,6 +1,9 @@
 .app--canvas {
   width: 100vw;
   height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* does this fix the spaces? */
 
 }
 
@@ -14,6 +17,7 @@
   margin: 0 auto;
   box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.15);
 }
+
 /* Nav Styling */
 
 .nav--container {
@@ -22,7 +26,7 @@
   flex-shrink: 0;
   background: #1f2937;
   box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.15);
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -69,20 +73,20 @@
   padding: 9px 13px;
   align-items: center;
   gap: 4px;
-  background-color: #1F293A ;
+  background-color: #1F293A;
   border-radius: 6px;
   border: 1px solid #D1D5DB;
 }
 
 .menu--trigger {
-color: #D5D4D8;
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px;
-background-color: transparent;
-border: none;
+  color: #D5D4D8;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  background-color: transparent;
+  border: none;
 
 
 }
@@ -96,10 +100,10 @@ border: none;
   align-items: left;
   gap: 4px;
   border-radius: 6px;
-background: #1F293A;
-list-style: none;
+  background: #1F293A;
+  list-style: none;
 
-/* box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); */
+  /* box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); */
 }
 
 
@@ -119,13 +123,13 @@ list-style: none;
   border: none;
   padding: 5px;
   cursor: pointer;
-/* text-base/leading-6/font-normal */
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px;
-list-style: none;
+  /* text-base/leading-6/font-normal */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  list-style: none;
 }
 
 
@@ -137,7 +141,7 @@ list-style: none;
   grid-template-columns: 110px 110px 110px 110px 110px;
   grid-template-rows: 414px 46px;
   background: #1f2937;
-  border-radius: 6px;  
+  border-radius: 6px;
 
 }
 
@@ -147,6 +151,7 @@ list-style: none;
   grid-template-rows: 414px 46px;
   transition: all .5s ease-in;
 }
+
 .hex--code--container {
   display: flex;
   flex-direction: column;
@@ -179,19 +184,19 @@ list-style: none;
   z-index: 1;
   bottom: 50%;
   opacity: 0;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   transition: all .2s ease-in;
 }
 
-.color--block:hover .copied--bubble{
+.color--block:hover .copied--bubble {
   opacity: 1;
   visibility: visible;
 
 }
 
 .color--block:hover {
-border: 1px solid  #ffffff;
-width: 108px;
-height: 416px;
+  border: 1px solid #ffffff;
+  width: 108px;
+  height: 416px;
 
 }

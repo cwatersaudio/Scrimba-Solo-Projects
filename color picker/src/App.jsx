@@ -9,7 +9,6 @@ function App() {
     swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"],
     colorMode: "triad",
   });
-  const [tempSeed, setTempSeed] = React.useState(colors.seedColor);
 
   React.useEffect(() => {
     ///scheme{?hex,rgb,hsl,cmyk,format,mode,count
@@ -86,7 +85,6 @@ function App() {
           <Navbar 
           colors={colors} 
           // updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
-          tempSeed = {tempSeed} 
           // updateColorMode= {updateColorMode}
           handleChange = {handleChange}
           />
