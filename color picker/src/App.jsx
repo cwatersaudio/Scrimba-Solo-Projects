@@ -22,20 +22,11 @@ function App() {
         const colorSwatchAPI = data.colors.map((item) => {
           return item.hex.value;
         });
-        const newSwatch = [colors.seedColor,...colorSwatchAPI]
+        const newSwatch = [colors.seedColor, ...colorSwatchAPI]
         updateColors(newSwatch);
       });
   }, [colors.seedColor, colors.colorMode]);
 
-  // function updateSeedColor(event) {
-  //   const newSeed = event.target.value
-  //   setColors((prevColors) => {
-  //     return {
-  //       ...prevColors,
-  //       seedColor: newSeed,
-  //     };
-  //   });
-  // }
 
   function updateColors(newColors) {
     setColors((prevColors) => {
@@ -46,21 +37,12 @@ function App() {
     });
   }
 
-  // function updateColorMode(newMode) {
-  //   setColors(prevColors => {
-  //     return {
-  //       ...prevColors,
-  //       colorMode: newMode
-  //     }
-  //   })
-
-  // }
 
 
 
   function handleChange(event) {
-   const {name, value} = event.target
-   console.log(name,value)
+    const { name, value } = event.target
+    console.log(name, value)
     setColors(prevColors => {
       return {
         ...prevColors,
@@ -70,23 +52,21 @@ function App() {
   }
 
   const colorSwatches = colors.swatches.map((item, index) => {
-    return <ColorSwatch  
-            color={item} 
-            key={index}
-            />;
+    return <ColorSwatch
+      color={item}
+      key={index}
+    />;
   });
 
   return (
     <>
       <div className="app--canvas"
-        style={{background: `linear-gradient(0.25turn,${colors.swatches.reverse().toString()})`}}
+        style={{ background: `linear-gradient(0.25turn,${colors.swatches.reverse().toString()})` }}
       >
         <div className="app--container">
-          <Navbar 
-          colors={colors} 
-          // updateSeedColor={updateSeedColor} //this could be simplified into one modifying function probably
-          // updateColorMode= {updateColorMode}
-          handleChange = {handleChange}
+          <Navbar
+            colors={colors}
+            handleChange={handleChange}
           />
           <div className='swatch--container'>
             {colorSwatches}
@@ -101,7 +81,3 @@ export default App;
 
 
 
-//To DO:
-
-// -Check alignment of dropdown
-// - add animation to dropdown 

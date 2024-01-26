@@ -1,50 +1,69 @@
 import React from "react";
+import MenuItem from "./MenuItem";
 
-export default function Menu (props) {
+export default function Menu(props) {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => {
-      setOpen(!open);
+        setOpen(!open);
     };
 
-    const handleMenuItem = (event) => { 
+    const handleMenuItem = (event) => {
         console.log(event.target.value)
         props.handleChange(event)
         setOpen(false);
-      };
+    };
 
     const Dropdown = ({ open, trigger, menu }) => {
-    return (
-        <div className="dropdown">
-        {trigger}
-        {open ? (
-            <ul className="menu">
-            {menu.map((menuItem, index) => (
-                <li key={index}>{menuItem}</li>
-            ))}
-            </ul>
-        ) : null}
-        </div>
-    );
+        return (
+            <div className="dropdown">
+                {trigger}
+                {open ? (
+                    <ul className="menu">
+                        {menu.map((menuItem, index) => (
+                            <li key={index}>{menuItem}</li>
+                        ))}
+                    </ul>
+                ) : null}
+            </div>
+        );
     };
+    const modeOptions = [
+        { name: "monochrome", title: "Monochrome" },
+        { name: "monochrome-dark", title: "Monochrome-Dark" },
+        { name: "monochrome-light", title: "Monochrome-Light" },
+        { name: "analogic", title: "Analogic" },
+        { name: "complement", title: "Complement" },
+        { name: "analogic-complement", title: "Analogic-Complement" },
+        { name: "triad", title: "Triad" },
+        { name: "quad", title: "Quad" }
+
+    ]
+
+
+    const ColorMenu = modeOptions.map((item, index) => {
+        return (
+            <MenuItem
+                handleClick={handleMenuItem}
+                className="menu--item"
+                title={item.title}
+                name={item.name}
+                value={item.name}
+                key={index}
+            />
+        )
+        console.log(item)
+    })
+
 
     return (
 
         <div>
             <Dropdown
                 open={open}
-                trigger={<div className="trigger--container" onClick={handleOpen}><button  className="menu--trigger">{props.colorMode}</button><img src="./images/select-menu-selector.svg" id="triggerArrow" ></img></div>}
-                menu={[
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="monochrome">Monochrome</button>, //this seems repetitive and not DRY...
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="monochrome-dark">Monochrome-Dark</button>,
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="monochrome-light">Monochrome-Light</button>,
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="analogic">Analogic</button>,
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="complement">Complement</button>,
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="analogic-complement">Analogic-Complement</button>,
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="triad">Triad</button>,
-                    <button onClick={handleMenuItem} className="menu-item" name="colorMode" value="quad">Quad</button>
-                ]}
+                trigger={<div className="trigger--container" onClick={handleOpen}><button className="menu--trigger">{props.colorMode}</button><img src="./images/select-menu-selector.svg" id="triggerArrow" ></img></div>}
+                menu={ColorMenu}
             />
-      </div>
+        </div>
 
 
     )

@@ -1,4 +1,3 @@
-import React from "react";
 import Menu from "./Menu";
 
 export default function Navbar(props) {
@@ -14,13 +13,12 @@ export default function Navbar(props) {
           value={props.colors.seedColor}
           onChange={props.handleChange}
         />
-        <Menu 
-        // updateColorMode = {props.updateColorMode}
-        colorMode = {props.colors.colorMode}
-        handleChange={props.handleChange}
+        <Menu
+          colors={props.colors}
+          handleChange={props.handleChange}
         />
 
-        
+
       </div>
     </>
   );
