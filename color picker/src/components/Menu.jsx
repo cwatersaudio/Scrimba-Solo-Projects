@@ -8,7 +8,6 @@ export default function Menu(props) {
     };
 
     const handleMenuItem = (event) => {
-        console.log(event.target.value)
         props.handleChange(event)
         setOpen(false);
     };
