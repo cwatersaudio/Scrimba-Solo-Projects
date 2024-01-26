@@ -46,12 +46,11 @@ export default function Menu(props) {
                 handleClick={handleMenuItem}
                 className="menu--item"
                 title={item.title}
-                name={item.name}
+                name="colorMode"
                 value={item.name}
                 key={index}
             />
         )
-        console.log(item)
     })
 
 
@@ -60,7 +59,7 @@ export default function Menu(props) {
         <div>
             <Dropdown
                 open={open}
-                trigger={<div className="trigger--container" onClick={handleOpen}><button className="menu--trigger">{props.colorMode}</button><img src="./images/select-menu-selector.svg" id="triggerArrow" ></img></div>}
+                trigger={<div className="trigger--container" onClick={handleOpen}><button className="menu--trigger">{props.colors.colorMode}</button><img src="./images/select-menu-selector.svg" id="triggerArrow" ></img></div>}
                 menu={ColorMenu}
             />
         </div>
