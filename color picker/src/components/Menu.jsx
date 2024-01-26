@@ -28,14 +28,14 @@ export default function Menu(props) {
         );
     };
     const modeOptions = [
-        { name: "monochrome", title: "Monochrome" },
-        { name: "monochrome-dark", title: "Monochrome-Dark" },
-        { name: "monochrome-light", title: "Monochrome-Light" },
-        { name: "analogic", title: "Analogic" },
-        { name: "complement", title: "Complement" },
-        { name: "analogic-complement", title: "Analogic-Complement" },
-        { name: "triad", title: "Triad" },
-        { name: "quad", title: "Quad" }
+        { name: "Monochrome" },
+        { name: "Monochrome-Dark" },
+        { name: "Monochrome-Light" },
+        { name: "Analogic" },
+        { name: "Complement" },
+        { name: "Analogic-Complement" },
+        { name: "Triad" },
+        { name: "Quad" }
 
     ]
 
@@ -45,7 +45,7 @@ export default function Menu(props) {
             <MenuItem
                 handleClick={handleMenuItem}
                 className="menu--item"
-                title={item.title}
+                title={item.name}
                 name="colorMode"
                 value={item.name}
                 key={index}

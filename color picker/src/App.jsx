@@ -11,14 +11,13 @@ function App() {
   });
 
   React.useEffect(() => {
-    ///scheme{?hex,rgb,hsl,cmyk,format,mode,count
     const trimmedHex = colors.seedColor.slice(1);
+    const trimmedMode = colors.colorMode.toLowerCase()
     fetch(
-      `https://www.thecolorapi.com/scheme?hex=${trimmedHex}&format=json&mode=${colors.colorMode}&count=4`
+      `https://www.thecolorapi.com/scheme?hex=${trimmedHex}&format=json&mode=${trimmedMode}&count=4`
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         const colorSwatchAPI = data.colors.map((item) => {
           return item.hex.value;
         });
@@ -42,7 +41,6 @@ function App() {
 
   function handleChange(event) {
     const { name, value } = event.target
-    console.log(name, value)
     setColors(prevColors => {
       return {
         ...prevColors,
@@ -59,21 +57,21 @@ function App() {
   });
 
   return (
-    <>
-      <div className="app--canvas"
-        style={{ background: `linear-gradient(0.25turn,${colors.swatches.reverse().toString()})` }}
-      >
-        <div className="app--container">
-          <Navbar
-            colors={colors}
-            handleChange={handleChange}
-          />
-          <div className='swatch--container'>
-            {colorSwatches}
-          </div>
+
+    <div className="app--canvas"
+      style={{ background: `linear-gradient(0.25turn,${colors.swatches.reverse().toString()})` }}
+    >
+      <div className="app--container">
+        <Navbar
+          colors={colors}
+          handleChange={handleChange}
+        />
+        <div className='swatch--container'>
+          {colorSwatches}
         </div>
       </div>
-    </>
+    </div>
+
   );
 }
 
