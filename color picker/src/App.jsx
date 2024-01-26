@@ -7,7 +7,7 @@ function App() {
   const [colors, setColors] = React.useState({
     seedColor: "#31DDBB",
     swatches: ["#000000", "#000000", "#000000", "#000000", "#000000"],
-    colorMode: "triad",
+    colorMode: "Triad",
   });
 
   React.useEffect(() => {
