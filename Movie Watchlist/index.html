@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700;800&display=swap" rel="stylesheet">
     <title>Chris' Movie Watchlist</title>
 </head>
+
 <body>
     <div class="app--container">
         <nav class="navbar">
@@ -16,17 +18,40 @@
                 <h1>Find Your Film</h1>
                 <a href="">My Watchlist</a>
             </div>
-            <div id="searchbar">
-                <input id="searchArea" type="text" placeholder="&#128270 Type your movie here" >
-                <button class="search--button">Search</button>
-            </div>
+            <form id="searchbar">
+                <input id="searchArea" type="text" placeholder="&#128270 Type your movie here">
+                <button class="search--button" onclick="searchMovie()">Search</button>
+            </form>
 
         </nav>
         <div class="movie--area">
             <!-- conditional rendering of list or blank icon -->
+            <div class="movie--card">
+                <img src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg"
+                    alt="" class="movie--poster">
+                <div class="movie--text">
+                    <div class="movie--row title--rating">
+                        <span class="title">The Lord of the Rings</span>
+                        <span>⭐️ 4.5</span>
+                    </div>
+                    <div class="movie--row stats">
+                        <p>Runtime</p>
+                        <p>Genres</p>
+                        <img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist">
+                        <label for="addToWatchlist">Add to Watchlist</label>
 
+                    </div>
+                    <p class="description">A meek Hobbit from the Shire and eight companions set out on a journey to
+                        destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron. A meek Hobbit
+                        from the Shire and eight companions set out on a journey to destroy the powerful One Ring and
+                        save Middle-earth from the Dark Lord Sauron.
+                    </p>
+                    <a href="#" class="read-more">Read more</a>
+                </div>
+
+            </div>
         </div>
-        
+
 
 
 
@@ -34,4 +59,5 @@
 
     <script src="./app.js"></script>
 </body>
+
 </html>
