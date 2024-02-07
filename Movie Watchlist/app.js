@@ -7,24 +7,37 @@ import movie from "./movieClass.js";
 //store movie list in localStorage
 //
 
+let currentMovies = [];
+let movieWatchlist;
+
+document.getElementById("search--button").addEventListener('click', searchMovie)
 
 function searchMovie() {
-    event.preventDefault(); //why is this 'depreciated'?
+    // event.preventDefault(); //why is this 'depreciated'?
     const searchTitle = document.getElementById('searchArea').value
-    console.log(searchTitle)
 
     fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            //turns each movie returned into a movie object and adds them to the current movie array
+            const movieResults = data.Search
+            movieResults.forEach((movObj) => {
+                const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot)
+                currentMovies.push(currentMovie)
+            })
+            currentMovies.map((item) => {
+                renderMovieCard(item)
+            })
+
         })
 
 }
-
-function renderMovieCard(movieHTML) {
+//renders each movie object as a card
+function renderMovieCard(movie) {
     const movieListEl = document.getElementById("movie--area")
 
-    movieListEl.innerHTML += movieHTML
+    movieListEl.innerHTML += movie.renderHTML()
 
 
 
@@ -73,15 +86,14 @@ const sampleMovie = {
     "imdbID": "tt0120737",
 }
 
-const lotr = new movie(sampleMovie.Title, sampleMovie.Poster, sampleMovie.imdbRating, sampleMovie.Runtime, sampleMovie.Genre, sampleMovie.Plot)
+// const lotr = new movie(sampleMovie.Title, sampleMovie.Poster, sampleMovie.imdbRating, sampleMovie.Runtime, sampleMovie.Genre, sampleMovie.Plot)
 
-const lotrHTML = lotr.renderHTML()
+// const lotrHTML = lotr.renderHTML()
 
-console.log(lotrHTML)
+// console.log(lotrHTML)
 
-renderMovieCard(lotrHTML)
-renderMovieCard(lotrHTML)
-renderMovieCard(lotrHTML)
+// renderMovieCard(lotr)
+
 
 
 
