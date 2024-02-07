@@ -1,5 +1,7 @@
 //create movie class {img, title, rating, runtime, genres[],watchlistbutton, description}
 
+import movie from "./movieClass.js";
+
 //API GET function --> gets movies
 
 //store movie list in localStorage
@@ -46,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-
 const sampleMovie = {
     "Title": "The Lord of the Rings: The Fellowship of the Ring",
     "Year": "2001",
@@ -67,6 +68,14 @@ const sampleMovie = {
     "imdbVotes": "1,973,498",
     "imdbID": "tt0120737",
 }
+
+const lotr = new movie(sampleMovie.Title, sampleMovie.Poster, sampleMovie.imdbRating, sampleMovie.Runtime, sampleMovie.Genre, sampleMovie.Plot)
+
+const lotrHTML = lotr.renderHTML()
+
+console.log(lotrHTML)
+
+
 
 {/* <div class="movie--card">
                 <img src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg"
