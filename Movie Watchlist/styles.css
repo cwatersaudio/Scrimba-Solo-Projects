@@ -50,6 +50,7 @@ nav {
 }
 
 #searchbar>input {
+    color: #ffffff;
     width: auto;
     flex-grow: 1;
     padding: .5rem;
