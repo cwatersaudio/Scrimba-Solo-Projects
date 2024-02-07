@@ -61,7 +61,37 @@ export default class Movie {
             this.imgAddress = imgAddress;
         }
 
+        //movie methods
+
+        function renderHTML() {
+            return (
+                `<div class="movie--card">
+                <img src="${this._imgAddress}"
+                    alt="" class="movie--poster">
+                <div class="movie--text">
+                    <div class="movie--row title--rating">
+                        <span class="title">${this._title}</span>
+                        <span>⭐️ ${this_.rating}</span>
+                    </div>
+                    <div class="movie--row stats">
+                        <p>${this._runtime}</p>
+                        <p>${this._genres.toString()}</p>
+                        <img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist">
+                        <label for="addToWatchlist">Add to Watchlist</label>
+
+                    </div>
+                    <p class="description">
+                    ${this._description}
+                    </p>
+                    <a href="#" class="read-more">Read more</a>
+                </div>
+
+            </div>`
+            )
+        }
+
     }
 
 
 }
+
