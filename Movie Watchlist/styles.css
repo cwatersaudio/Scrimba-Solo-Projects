@@ -64,7 +64,7 @@ nav {
     width: 120px;
 }
 
-.movie--area {
+#movie--area {
     padding-top: 2rem;
     border: solid 1px blue;
     display: flex;

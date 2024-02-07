@@ -21,32 +21,36 @@ function searchMovie() {
 
 }
 
-function renderMovieCard(movObj) {
+function renderMovieCard(movieHTML) {
+    const movieListEl = document.getElementById("movie--area")
+
+    movieListEl.innerHTML += movieHTML
+
 
 
 }
 
 
 // logic for 'read more/less' button in description
-document.addEventListener('DOMContentLoaded', function () {
-    var text = document.querySelector('.description');
-    var readMoreBtn = document.querySelector('.read-more');
+// document.addEventListener('DOMContentLoaded', function () {
+//     var text = document.querySelector('.description');
+//     var readMoreBtn = document.querySelector('.read-more');
 
-    if (text.scrollHeight > text.clientHeight) {
-        readMoreBtn.style.display = 'inline';
-    }
+//     if (text.scrollHeight > text.clientHeight) {
+//         readMoreBtn.style.display = 'inline';
+//     }
 
-    readMoreBtn.addEventListener('click', function (event) {
-        event.preventDefault();
-        text.classList.toggle('show-more');
+//     readMoreBtn.addEventListener('click', function (event) {
+//         event.preventDefault();
+//         text.classList.toggle('show-more');
 
-        if (text.classList.contains('show-more')) {
-            readMoreBtn.textContent = 'Read less';
-        } else {
-            readMoreBtn.textContent = 'Read more';
-        }
-    });
-});
+//         if (text.classList.contains('show-more')) {
+//             readMoreBtn.textContent = 'Read less';
+//         } else {
+//             readMoreBtn.textContent = 'Read more';
+//         }
+//     });
+// });
 
 const sampleMovie = {
     "Title": "The Lord of the Rings: The Fellowship of the Ring",
@@ -74,6 +78,10 @@ const lotr = new movie(sampleMovie.Title, sampleMovie.Poster, sampleMovie.imdbRa
 const lotrHTML = lotr.renderHTML()
 
 console.log(lotrHTML)
+
+renderMovieCard(lotrHTML)
+renderMovieCard(lotrHTML)
+renderMovieCard(lotrHTML)
 
 
 
