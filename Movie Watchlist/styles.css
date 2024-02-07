@@ -1,0 +1,71 @@
+body {
+    background-color: #1C1C1C;
+    color: hsl(0, 0%, 88%);
+    font-family: 'Barlow', sans-serif;
+    ;
+}
+
+h1 {
+    font-size: 2.5rem;
+
+}
+
+a {
+    text-decoration: none;
+    color: inherit
+}
+
+.app--container {
+    width: 550px;
+    height: 779px;
+    flex-shrink: 0;
+    border: 1px yellow solid;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    margin: 0;
+    height: 13rem;
+    background: url('./assets/image-36.png'), rgba(91, 84, 84, 0.244) 0px -158.291px / 100% 423.007% no-repeat;
+}
+
+.top--nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 5rem 2.5rem 0;
+
+
+}
+
+
+
+#searchbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2.5rem;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+#searchbar>input {
+    width: auto;
+    flex-grow: 1;
+    padding: .5rem;
+    background: #2E2E2F;
+    border: none
+}
+
+#searchbar>button {
+    border: none;
+    background: #4B4B4B;
+    color: inherit;
+    width: 120px;
+}
+
+.movie--area {
+    border: solid 1px blue;
+    display: flex;
+    flex-direction: column;
+}
