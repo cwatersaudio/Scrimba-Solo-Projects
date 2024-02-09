@@ -14,25 +14,28 @@ document.getElementById("search--button").addEventListener('click', searchMovie)
 
 function searchMovie() {
     // event.preventDefault(); //why is this 'depreciated'?
-    const searchTitle = document.getElementById('searchArea').value
+    const searchTitle = document.getElementById('searchArea')
 
-    fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle}`)
+    //gets an array of movies
+    fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle.value}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
-            //turns each movie returned into a movie object and adds them to the current movie array
-            const movieResults = data.Search
-            movieResults.forEach((movObj) => {
-                const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot)
-                currentMovies.push(currentMovie)
-            })
-            currentMovies.map((item) => {
-                renderMovieCard(item)
-            })
+            const movieResults = data.Search.map(item => item.imdbID)
 
+            movieResults.forEach(ID => {
+                fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`)
+                    .then(res => res.json())
+                    .then(movObj => {
+                        //turns each movie returned into a movie object and displays them
+                        const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot)
+                        renderMovieCard(currentMovie)
+                    })
+            })
         })
-
+    searchTitle.value = ""
 }
+
+
 //renders each movie object as a card
 function renderMovieCard(movie) {
     const movieListEl = document.getElementById("movie--area")
