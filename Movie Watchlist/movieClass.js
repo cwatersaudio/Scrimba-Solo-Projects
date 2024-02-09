@@ -89,7 +89,10 @@ export default class movie {
                 </p>
                 <a href="#" class="read-more">Read more</a>
             </div>
-        </div>`
+            
+
+        </div>
+        <hr />`
         return movieHTML
     }
 }

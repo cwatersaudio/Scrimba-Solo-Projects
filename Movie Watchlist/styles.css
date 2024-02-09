@@ -78,6 +78,11 @@ nav {
     align-items: center;
 }
 
+hr {
+    border-top: 1.5px #A5A5A5 solid;
+    width: 80%;
+}
+
 .movie--poster {
     height: 10rem;
     width: 7rem;
