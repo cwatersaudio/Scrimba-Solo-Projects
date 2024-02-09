@@ -10,12 +10,24 @@ import movie from "./movieClass.js";
 let currentMovies = [];
 let movieWatchlist;
 
-document.getElementById("search--button").addEventListener('click', searchMovie)
+const searchButtonEl = document.getElementById("search--button")
+const searchTitle = document.getElementById('searchArea')
+const movieListEl = document.getElementById("movie--area")
+
+
+searchButtonEl.addEventListener('click', searchMovie)
+
+searchTitle.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        searchButtonEl.click();
+    }
+});
+
 
 function searchMovie() {
+    clearMovieArea();
     // event.preventDefault(); //why is this 'depreciated'?
-    const searchTitle = document.getElementById('searchArea')
-
+    console.log(searchTitle)
     //gets an array of movies
     fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle.value}`)
         .then(res => res.json())
@@ -38,14 +50,14 @@ function searchMovie() {
 
 //renders each movie object as a card
 function renderMovieCard(movie) {
-    const movieListEl = document.getElementById("movie--area")
 
     movieListEl.innerHTML += movie.renderHTML()
 
-
-
 }
 
+function clearMovieArea() {
+    movieListEl.innerHTML = ""
+}
 
 // logic for 'read more/less' button in description
 // document.addEventListener('DOMContentLoaded', function () {

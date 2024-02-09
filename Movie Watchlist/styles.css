@@ -19,14 +19,13 @@ a {
     width: 550px;
     height: 779px;
     flex-shrink: 0;
-    border: 1px yellow solid;
     display: flex;
     flex-direction: column;
 }
 
 nav {
     margin: 0;
-    height: 13rem;
+    height: auto;
     background: url('./assets/image-36.png'), rgba(91, 84, 84, 0.244) 0px -158.291px / 100% 423.007% no-repeat;
 }
 
@@ -53,7 +52,7 @@ nav {
     color: #ffffff;
     width: auto;
     flex-grow: 1;
-    padding: .5rem;
+    padding: 1rem;
     background: #2E2E2F;
     border: none
 }
@@ -67,7 +66,6 @@ nav {
 
 #movie--area {
     padding-top: 2rem;
-    border: solid 1px blue;
     display: flex;
     flex-direction: column;
     overflow: scroll;
