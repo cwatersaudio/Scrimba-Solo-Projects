@@ -2,7 +2,7 @@ body {
     background-color: #1C1C1C;
     color: hsl(0, 0%, 88%);
     font-family: 'Barlow', sans-serif;
-    ;
+
 }
 
 h1 {
@@ -24,8 +24,10 @@ a {
 }
 
 nav {
+    border: 2px blue solid;
     margin: 0;
-    height: auto;
+    height: 227px;
+    /* height: auto; */
     background: url('./assets/image-36.png'), rgba(91, 84, 84, 0.244) 0px -158.291px / 100% 423.007% no-repeat;
 }
 
@@ -33,7 +35,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: 5rem 2.5rem 0;
+    margin: 4rem 2.5rem 0;
+
+    /* want to figure out how to move searchbar */
 
 
 }
