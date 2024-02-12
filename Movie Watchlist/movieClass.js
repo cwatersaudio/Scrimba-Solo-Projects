@@ -5,13 +5,14 @@ export default class movie {
         rating,
         runtime,
         genres,
-        description) {
+        description, ID) {
         this._title = title;
         this._rating = rating;
         this._runtime = runtime;
         this._genres = genres;
         this._description = description;
         this._imgAddress = imgAddress;
+        this._ID = ID
 
         function getTitle() {
             return this.title;
@@ -80,7 +81,7 @@ export default class movie {
                 <div class="movie--row stats">
                     <p>${this._runtime}</p>
                     <p>${this._genres}</p>
-                    <img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist">
+                    <img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist" onClick="()=>console.log("hello")">
                     <label for="addToWatchlist">Add to Watchlist</label>
 
                 </div>

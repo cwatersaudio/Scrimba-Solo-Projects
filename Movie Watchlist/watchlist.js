@@ -1,4 +1,4 @@
-// import { renderMovieCard, clearMovieArea } from "./app.js";
+import { renderMovieCard, movieWatchlist } from "./app.js";
 
 
 

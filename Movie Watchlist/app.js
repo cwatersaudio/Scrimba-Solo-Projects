@@ -8,7 +8,7 @@ import movie from "./movieClass.js";
 //
 
 let currentMovies = [];
-let movieWatchlist;
+export let movieWatchlist = [];
 
 const searchButtonEl = document.getElementById("search--button")
 const searchTitle = document.getElementById('searchArea')
@@ -39,8 +39,8 @@ function searchMovie() {
                     .then(res => res.json())
                     .then(movObj => {
                         //turns each movie returned into a movie object and displays them
-                        const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot)
-                        renderMovieCard(currentMovie)
+                        const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot, movObj.imdbID)
+                        renderMovieCard(currentMovie, movieListEl)
                     })
             })
         })
@@ -49,14 +49,19 @@ function searchMovie() {
 
 
 //renders each movie object as a card
-function renderMovieCard(movie) {
+export function renderMovieCard(movie, location) {
 
-    movieListEl.innerHTML += movie.renderHTML()
+    location.innerHTML += movie.renderHTML()
 
 }
 
 function clearMovieArea() {
     movieListEl.innerHTML = ""
+}
+
+function addToWatchlist(movieID) {
+    movieWatchlist.push(movieID)
+    console.log(movieID)
 }
 
 // logic for 'read more/less' button in description
@@ -101,16 +106,6 @@ const sampleMovie = {
     "imdbID": "tt0120737",
 }
 
-// const lotr = new movie(sampleMovie.Title, sampleMovie.Poster, sampleMovie.imdbRating, sampleMovie.Runtime, sampleMovie.Genre, sampleMovie.Plot)
-
-// const lotrHTML = lotr.renderHTML()
-
-// console.log(lotrHTML)
-
-// renderMovieCard(lotr)
-
-
-
 
 {/* <div class="movie--card">
                 <img src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg"
@@ -136,3 +131,4 @@ const sampleMovie = {
                 </div>
 
             </div> */}
+
