@@ -26,7 +26,6 @@ searchTitle.addEventListener("keypress", function (event) {
 
 function searchMovie() {
     clearMovieArea();
-    // event.preventDefault(); //why is this 'depreciated'?
     console.log(searchTitle)
     //gets an array of movies
     fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle.value}`)
@@ -34,20 +33,28 @@ function searchMovie() {
         .then(data => {
             const movieResults = data.Search.map(item => item.imdbID)
 
-            movieResults.forEach(ID => {
-                fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`)
-                    .then(res => res.json())
-                    .then(movObj => {
-                        //turns each movie returned into a movie object and displays them
-                        const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot, movObj.imdbID)
-                        renderMovieCard(currentMovie, movieListEl)
-                    })
-            })
+            makeMovObjects(movieResults, movieListEl)
+            console.log(currentMovies)
         })
     searchTitle.value = ""
+
 }
 
 
+
+export function makeMovObjects(movies, location) {
+    movies.forEach(ID => {
+        fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`)
+            .then(res => res.json())
+            .then(movObj => {
+                //turns each movie returned into a movie object and displays them
+                const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot, movObj.imdbID)
+                currentMovies.push(currentMovie)
+                renderMovieCard(currentMovie, location)
+
+            })
+    })
+}
 //renders each movie object as a card
 export function renderMovieCard(movie, location) {
 
@@ -59,9 +66,15 @@ function clearMovieArea() {
     movieListEl.innerHTML = ""
 }
 
+document.addEventListener('click', e => {
+    if (e.target.dataset.imdbid) {
+        addToWatchlist(e.target.dataset.imdbid)
+    }
+})
+
 function addToWatchlist(movieID) {
     movieWatchlist.push(movieID)
-    console.log(movieID)
+    console.log(movieWatchlist)
 }
 
 // logic for 'read more/less' button in description

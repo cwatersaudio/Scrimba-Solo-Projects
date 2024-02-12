@@ -62,6 +62,10 @@ export default class movie {
             this.imgAddress = imgAddress;
         }
 
+        function getID() {
+            return this.ID;
+        }
+
 
     }
 
@@ -81,7 +85,7 @@ export default class movie {
                 <div class="movie--row stats">
                     <p>${this._runtime}</p>
                     <p>${this._genres}</p>
-                    <img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist" onClick="()=>console.log("hello")">
+                    <img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist" data-imdbID=${this._ID}>
                     <label for="addToWatchlist">Add to Watchlist</label>
 
                 </div>
