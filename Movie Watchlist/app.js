@@ -7,74 +7,74 @@ import movie from "./movieClass.js";
 //store movie list in localStorage
 //
 
-let currentMovies = [];
-export let movieWatchlist = [];
+const currentMovies = [];
+export const movieWatchlist = [];
 
-const searchButtonEl = document.getElementById("search--button")
-const searchTitle = document.getElementById('searchArea')
-const movieListEl = document.getElementById("movie--area")
+const searchButtonEl = document.getElementById("search--button");
+const searchTitle = document.getElementById("searchArea");
+const movieListEl = document.getElementById("movie--area");
 
+searchButtonEl.addEventListener("click", searchMovie);
 
-searchButtonEl.addEventListener('click', searchMovie)
-
-searchTitle.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        searchButtonEl.click();
-    }
+searchTitle.addEventListener("keypress", (event) => {
+	if (event.key === "Enter") {
+		searchButtonEl.click();
+	}
 });
 
-
 function searchMovie() {
-    clearMovieArea();
-    console.log(searchTitle)
-    //gets an array of movies
-    fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle.value}`)
-        .then(res => res.json())
-        .then(data => {
-            const movieResults = data.Search.map(item => item.imdbID)
+	clearMovieArea();
+	console.log(searchTitle);
+	//gets an array of movies
+	fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle.value}`)
+		.then((res) => res.json())
+		.then((data) => {
+			const movieResults = data.Search.map((item) => item.imdbID);
 
-            makeMovObjects(movieResults, movieListEl)
-            console.log(currentMovies)
-        })
-    searchTitle.value = ""
-
+			makeMovObjects(movieResults, movieListEl);
+			console.log(currentMovies);
+		});
+	searchTitle.value = "";
 }
 
-
-
 export function makeMovObjects(movies, location) {
-    movies.forEach(ID => {
-        fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`)
-            .then(res => res.json())
-            .then(movObj => {
-                //turns each movie returned into a movie object and displays them
-                const currentMovie = new movie(movObj.Title, movObj.Poster, movObj.imdbRating, movObj.Runtime, movObj.Genre, movObj.Plot, movObj.imdbID)
-                currentMovies.push(currentMovie)
-                renderMovieCard(currentMovie, location)
-
-            })
-    })
+	for (const ID of movies) {
+		fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`)
+			.then((res) => res.json())
+			.then((movObj) => {
+				//turns each movie returned into a movie object and displays them
+				const currentMovie = new movie(
+					movObj.Title,
+					movObj.Poster,
+					movObj.imdbRating,
+					movObj.Runtime,
+					movObj.Genre,
+					movObj.Plot,
+					movObj.imdbID,
+				);
+				currentMovies.push(currentMovie);
+				renderMovieCard(currentMovie, location);
+			});
+	}
 }
 //renders each movie object as a card
 export function renderMovieCard(movie, location) {
-
-    location.innerHTML += movie.renderHTML()
-
+	location.innerHTML += movie.renderHTML();
 }
 
 function clearMovieArea() {
-    movieListEl.innerHTML = ""
+	movieListEl.innerHTML = "";
 }
 
-document.addEventListener('click', e => {
-    if (e.target.dataset.imdbid) {
-        addToWatchlist(e.target.dataset.imdbid)
-    }
-})
+document.addEventListener("click", (e) => {
+	if (e.target.dataset.imdbid) {
+		addToWatchlist(e.target.dataset.imdbid);
+	}
+});
 
 function addToWatchlist(movieID) {
-    movieWatchlist.push(movieID)
-    console.log(movieWatchlist)
+	movieWatchlist.push(movieID);
+	console.log(movieWatchlist);
 }
 
 // logic for 'read more/less' button in description
@@ -99,28 +99,29 @@ function addToWatchlist(movieID) {
 // });
 
 const sampleMovie = {
-    "Title": "The Lord of the Rings: The Fellowship of the Ring",
-    "Year": "2001",
-    "Rated": "PG-13",
-    "Released": "19 Dec 2001",
-    "Runtime": "178 min",
-    "Genre": "Action, Adventure, Drama",
-    "Director": "Peter Jackson",
-    "Writer": "J.R.R. Tolkien, Fran Walsh, Philippa Boyens",
-    "Actors": "Elijah Wood, Ian McKellen, Orlando Bloom",
-    "Plot": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
-    "Language": "English, Sindarin",
-    "Country": "New Zealand, United States",
-    "Awards": "Won 4 Oscars. 125 wins & 127 nominations total",
-    "Poster": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
-    "Metascore": "92",
-    "imdbRating": "8.9",
-    "imdbVotes": "1,973,498",
-    "imdbID": "tt0120737",
-}
+	Title: "The Lord of the Rings: The Fellowship of the Ring",
+	Year: "2001",
+	Rated: "PG-13",
+	Released: "19 Dec 2001",
+	Runtime: "178 min",
+	Genre: "Action, Adventure, Drama",
+	Director: "Peter Jackson",
+	Writer: "J.R.R. Tolkien, Fran Walsh, Philippa Boyens",
+	Actors: "Elijah Wood, Ian McKellen, Orlando Bloom",
+	Plot: "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+	Language: "English, Sindarin",
+	Country: "New Zealand, United States",
+	Awards: "Won 4 Oscars. 125 wins & 127 nominations total",
+	Poster:
+		"https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
+	Metascore: "92",
+	imdbRating: "8.9",
+	imdbVotes: "1,973,498",
+	imdbID: "tt0120737",
+};
 
-
-{/* <div class="movie--card">
+{
+	/* <div class="movie--card">
                 <img src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg"
                     alt="" class="movie--poster">
                 <div class="movie--text">
@@ -143,5 +144,5 @@ const sampleMovie = {
                     <a href="#" class="read-more">Read more</a>
                 </div>
 
-            </div> */}
-
+            </div> */
+}
