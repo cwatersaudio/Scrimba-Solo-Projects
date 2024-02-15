@@ -7,7 +7,7 @@ import movie from "./movieClass.js";
 //store movie list in localStorage
 //
 
-const currentMovies = [];
+let currentMovies = [];
 export const movieWatchlist = [];
 
 const searchButtonEl = document.getElementById("search--button");
@@ -40,23 +40,22 @@ function searchMovie() {
 	searchTitle.value = "";
 }
 
-export function makeMovObjects(movies, location) {
+export async function makeMovObjects(movies, location) {
 	for (const ID of movies) {
-		fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`)
-			.then((res) => res.json())
-			.then((movObj) => {
-				//turns each movie returned into a movie object and displays them
-				const currentMovie = new movie(
-					movObj.Title,
-					movObj.Poster,
-					movObj.imdbRating,
-					movObj.Runtime,
-					movObj.Genre,
-					movObj.Plot,
-					movObj.imdbID,
-				);
-				currentMovies.push(currentMovie);
-			});
+		const res = await fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`);
+		const movObj = await res.json().then((movObj) => {
+			//turns each movie returned into a movie object and displays them
+			const currentMovie = new movie(
+				movObj.Title,
+				movObj.Poster,
+				movObj.imdbRating,
+				movObj.Runtime,
+				movObj.Genre,
+				movObj.Plot,
+				movObj.imdbID,
+			);
+			currentMovies.push(currentMovie);
+		});
 	}
 	console.log(currentMovies);
 	renderMovieCards(currentMovies, location);
@@ -79,6 +78,7 @@ export function renderMovieCards(movieArray, location) {
 }
 
 function clearMovieArea() {
+	currentMovies = [];
 	movieListEl.innerHTML = "";
 }
 
