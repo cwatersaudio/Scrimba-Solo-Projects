@@ -24,16 +24,19 @@ searchTitle.addEventListener("keypress", (event) => {
 
 function searchMovie() {
 	clearMovieArea();
-	console.log(searchTitle);
 	//gets an array of movies
 	fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${searchTitle.value}`)
 		.then((res) => res.json())
 		.then((data) => {
-			const movieResults = data.Search.map((item) => item.imdbID);
-
-			makeMovObjects(movieResults, movieListEl);
-			console.log(currentMovies);
-		});
+			console.log(data);
+			if (data.Response) {
+				const movieResults = data.Search.map((item) => item.imdbID);
+				makeMovObjects(movieResults, movieListEl); //sends list of movie IDs to object renderer
+			} else if (data.Response === false) {
+				throw Error;
+			}
+		})
+		.catch((err) => console.error("error in fetching"));
 	searchTitle.value = "";
 }
 
@@ -53,13 +56,26 @@ export function makeMovObjects(movies, location) {
 					movObj.imdbID,
 				);
 				currentMovies.push(currentMovie);
-				renderMovieCard(currentMovie, location);
 			});
 	}
+	console.log(currentMovies);
+	renderMovieCards(currentMovies, location);
 }
 //renders each movie object as a card
-export function renderMovieCard(movie, location) {
-	location.innerHTML += movie.renderHTML();
+export function renderMovieCards(movieArray, location) {
+	//is it bad to pass 'location' through MakeMovObjects to renderMovieCards?
+	console.log(movieArray);
+	console.log(location);
+	// movieArray.forEach((item) => {
+	// 	console.log(item);
+	// 	location.innerHTML += item.renderHTML();
+	// });
+
+	for (const mov of movieArray) {
+		console.log(mov.title);
+		const cardHTML = mov.renderHTML();
+		location.innerHTML += cardHTML;
+	}
 }
 
 function clearMovieArea() {
@@ -119,30 +135,3 @@ const sampleMovie = {
 	imdbVotes: "1,973,498",
 	imdbID: "tt0120737",
 };
-
-{
-	/* <div class="movie--card">
-                <img src="https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg"
-                    alt="" class="movie--poster">
-                <div class="movie--text">
-                    <div class="movie--row title--rating">
-                        <span class="title">The Lord of the Rings</span>
-                        <span>⭐️ 4.5</span>
-                    </div>
-                    <div class="movie--row stats">
-                        <p>Runtime</p>
-                        <p>Genres</p>
-                        <img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist">
-                        <label for="addToWatchlist">Add to Watchlist</label>
-
-                    </div>
-                    <p class="description">A meek Hobbit from the Shire and eight companions set out on a journey to
-                        destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron. A meek Hobbit
-                        from the Shire and eight companions set out on a journey to destroy the powerful One Ring and
-                        save Middle-earth from the Dark Lord Sauron.
-                    </p>
-                    <a href="#" class="read-more">Read more</a>
-                </div>
-
-            </div> */
-}
