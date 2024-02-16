@@ -8,7 +8,7 @@ import movie from "./movieClass.js";
 //
 
 let currentMovies = [];
-const movieWatchlist = [];
+const movieWatchlist = JSON.parse(localStorage.getItem("movieWatchlist"));
 
 const searchButtonEl = document.getElementById("search--button");
 const searchTitle = document.getElementById("searchArea");
