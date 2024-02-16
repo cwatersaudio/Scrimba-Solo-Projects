@@ -1,80 +1,70 @@
 export default class movie {
-    constructor(
-        title,
-        imgAddress,
-        rating,
-        runtime,
-        genres,
-        description, ID) {
-        this._title = title;
-        this._rating = rating;
-        this._runtime = runtime;
-        this._genres = genres;
-        this._description = description;
-        this._imgAddress = imgAddress;
-        this._ID = ID
+	constructor(title, imgAddress, rating, runtime, genres, description, ID) {
+		this._title = title;
+		this._rating = rating;
+		this._runtime = runtime;
+		this._genres = genres;
+		this._description = description;
+		this._imgAddress = imgAddress;
+		this._ID = ID;
 
-        function getTitle() {
-            return this.title;
-        }
+		function getTitle() {
+			return this._title;
+		}
 
-        function setTitle(title) {
-            this.title = title;
-        }
+		function setTitle(title) {
+			this._title = title;
+		}
 
-        function getRating() {
-            return this.rating;
-        }
+		function getRating() {
+			return this.rating;
+		}
 
-        function setRating(rating) {
-            this.rating = rating;
-        }
+		function setRating(rating) {
+			this.rating = rating;
+		}
 
-        function getRuntime() {
-            return this.runtime;
-        }
+		function getRuntime() {
+			return this.runtime;
+		}
 
-        function setRuntime(runtime) {
-            this.runtime = runtime;
-        }
+		function setRuntime(runtime) {
+			this.runtime = runtime;
+		}
 
-        function getGenres() {
-            return this.genres;
-        }
+		function getGenres() {
+			return this.genres;
+		}
 
-        function setGenres(genres) {
-            this.genres = genres;
-        }
+		function setGenres(genres) {
+			this.genres = genres;
+		}
 
-        function getDescription() {
-            return this.description;
-        }
+		function getDescription() {
+			return this.description;
+		}
 
-        function setDescription(description) {
-            this.description = description;
-        }
+		function setDescription(description) {
+			this.description = description;
+		}
 
-        function getImgAddress() {
-            return this.imgAddress;
-        }
+		function getImgAddress() {
+			return this.imgAddress;
+		}
 
-        function setImgAddress(imgAddress) {
-            this.imgAddress = imgAddress;
-        }
+		function setImgAddress(imgAddress) {
+			this.imgAddress = imgAddress;
+		}
 
-        function getID() {
-            return this.ID;
-        }
+		function getID() {
+			return this.ID;
+		}
+	}
 
+	//movie methods
 
-    }
-
-    //movie methods
-
-    renderHTML() {
-        const movieHTML =
-
-            `<div class="movie--card">
+	renderHTML() {
+		const movieHTML = `<div class="movie--card">
             <img src="${this._imgAddress}"
                 alt="" class="movie--poster">
             <div class="movie--text">
@@ -97,8 +87,7 @@ export default class movie {
             
 
         </div>
-        <hr />`
-        return movieHTML
-    }
+        <hr />`;
+		return movieHTML;
+	}
 }
-

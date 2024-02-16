@@ -1,8 +1,13 @@
-import { renderMovieCard, movieWatchlist, makeMovObjects } from "./app.js";
+import { renderMovieCards, renderHTML } from "./app.js";
 
 const watchlistEl = document.getElementById("watchlist");
-//populates watchlist with objects and renders them
-makeMovObjects(movieWatchlist, watchlistEl);
+let movieWatchlist = JSON.parse(localStorage.getItem("movieWatchlist"));
+console.log(movieWatchlist);
+
+document.addEventListener(
+	"DOMContentLoaded",
+	renderMovieCards(movieWatchlist, watchlistEl),
+);
 
 document.addEventListener("click", (e) => {
 	if (e.target.dataset.imdbid) {
@@ -10,9 +15,19 @@ document.addEventListener("click", (e) => {
 	}
 });
 //remove from watchlist ()
-function removeFromWatchlist(movieID) {
-	const delID = movieWatchlist.indexOf(movieID);
-	console.log(delID);
-	movieWatchlist.splice(delID, 1);
-	renderMovieCard;
-}
+// function removeFromWatchlist(movieID) {
+// 	const delID = movieWatchlist.indexOf(movieID);
+// 	console.log(delID);
+// 	movieWatchlist.splice(delID, 1);
+// 	renderMovieCards(movieWatchlist, watchlistEl);
+// }
+
+//////////////////////////////
+
+//remove from watchlist ()
+// function removeFromWatchlist(movieID) {
+// 	const delID = movieWatchlist.indexOf(movieID);
+// 	console.log(delID);
+// 	movieWatchlist.splice(delID, 1);
+// 	renderMovieCards(movieWatchlist, watchlistEl);
+// }

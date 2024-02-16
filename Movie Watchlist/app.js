@@ -8,15 +8,15 @@ import movie from "./movieClass.js";
 //
 
 let currentMovies = [];
-export const movieWatchlist = [];
+const movieWatchlist = [];
 
 const searchButtonEl = document.getElementById("search--button");
 const searchTitle = document.getElementById("searchArea");
 const movieListEl = document.getElementById("movie--area");
 
-searchButtonEl.addEventListener("click", searchMovie);
+searchButtonEl?.addEventListener("click", searchMovie);
 
-searchTitle.addEventListener("keypress", (event) => {
+searchTitle?.addEventListener("keypress", (event) => {
 	if (event.key === "Enter") {
 		searchButtonEl.click();
 	}
@@ -40,7 +40,7 @@ function searchMovie() {
 	searchTitle.value = "";
 }
 
-export async function makeMovObjects(movies, location) {
+async function makeMovObjects(movies, location) {
 	for (const ID of movies) {
 		const res = await fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`);
 		const movObj = await res.json().then((movObj) => {
@@ -71,8 +71,7 @@ export function renderMovieCards(movieArray, location) {
 	// });
 
 	for (const mov of movieArray) {
-		console.log(mov.title);
-		const cardHTML = mov.renderHTML();
+		const cardHTML = renderHTML(mov);
 		location.innerHTML += cardHTML;
 	}
 }
@@ -89,8 +88,15 @@ document.addEventListener("click", (e) => {
 });
 
 function addToWatchlist(movieID) {
-	movieWatchlist.push(movieID);
-	console.log(movieWatchlist);
+	const movToAdd = currentMovies.find((item) => item._ID === movieID); //finds the movie object w/ID that was clicked
+	if (movieWatchlist.some((item) => item._ID === movieID)) {
+		console.log("that was a duplicate");
+	} else {
+		//checks for dups in watchlist
+		movieWatchlist.push(movToAdd); //adds that object to an array
+		localStorage.setItem("movieWatchlist", JSON.stringify(movieWatchlist)); //pushes array to localStorage
+		console.log(JSON.parse(localStorage.getItem("movieWatchlist")));
+	}
 }
 
 // logic for 'read more/less' button in description
@@ -114,24 +120,30 @@ function addToWatchlist(movieID) {
 //     });
 // });
 
-const sampleMovie = {
-	Title: "The Lord of the Rings: The Fellowship of the Ring",
-	Year: "2001",
-	Rated: "PG-13",
-	Released: "19 Dec 2001",
-	Runtime: "178 min",
-	Genre: "Action, Adventure, Drama",
-	Director: "Peter Jackson",
-	Writer: "J.R.R. Tolkien, Fran Walsh, Philippa Boyens",
-	Actors: "Elijah Wood, Ian McKellen, Orlando Bloom",
-	Plot: "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
-	Language: "English, Sindarin",
-	Country: "New Zealand, United States",
-	Awards: "Won 4 Oscars. 125 wins & 127 nominations total",
-	Poster:
-		"https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
-	Metascore: "92",
-	imdbRating: "8.9",
-	imdbVotes: "1,973,498",
-	imdbID: "tt0120737",
-};
+export function renderHTML(movie) {
+	const movieHTML = `<div class="movie--card">
+		<img src="${movie._imgAddress}"
+			alt="" class="movie--poster">
+		<div class="movie--text">
+			<div class="movie--row title--rating">
+				<span class="title">${movie._title}</span>
+				<span>⭐️ ${movie._rating}</span>
+			</div>
+			<div class="movie--row stats">
+				<p>${movie._runtime}</p>
+				<p>${movie._genres}</p>
+				<img src="./assets/Plus.svg" alt="add to watchlist button" name="addToWatchlist" data-imdbID=${movie._ID}>
+				<label for="addToWatchlist">Add to Watchlist</label>
+
+			</div>
+			<p class="description">
+			${movie._description}
+			</p>
+			<a href="#" class="read-more">Read more</a>
+		</div>
+		
+
+	</div>
+	<hr />`;
+	return movieHTML;
+}
