@@ -1,6 +1,6 @@
 import React from "react";
 
-const MovieCard = (props) => {
+export const MovieCard = (props) => {
 	const [movButton, setMovButton] = React.useState(); //initialize w/props.buttonType
 	return (
 		<>
