@@ -1,12 +1,13 @@
 import React from "react";
 
 export default function Navbar(props) {
+
+	console.log(props.buttonStatus)
 	return (
 		<nav class="navbar">
 			<div class="top--nav">
 				<h1>Find Your Film</h1>
-				{}
-				<a href="">My Watchlist</a>
+				<a href="">{props.buttonStatus === 'watchlist'?`My Watchlist`:`Search for Movies`}</a>
 			</div>
 			<div id="searchbar">
 				<input

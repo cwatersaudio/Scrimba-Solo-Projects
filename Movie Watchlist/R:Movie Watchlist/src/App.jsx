@@ -5,12 +5,11 @@ import Navbar from "./components/Navbar";
 
 //State: CURRENT MOVIES
 // STATE: WATCHLIST
-//BUTTON STATUS
-
+const {buttonStatus,setButtonStatus} = React.useState("watchlist")
 //fn:Movie Search
 
 function searchMovie(title) {
-	clearMovieArea();
+	// clearMovieArea();
 	//gets an array of movies
 	fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${title}`)
 		.then((res) => res.json())
@@ -18,19 +17,21 @@ function searchMovie(title) {
 			console.log(data);
 			if (data.Response) {
 				const movieResults = data.Search.map((item) => item.imdbID);
-				makeMovObjects(movieResults, movieListEl); //sends list of movie IDs to object renderer
 			} else if (data.Response === false) {
 				throw Error;
 			}
 		})
 		.catch((err) => console.error("error in fetching"));
-	searchTitle.value = "";
 }
 
 function App() {
 	return (
 		<>
-			<Navbar />
+			<Navbar 
+			buttonStatus = {buttonStatus}
+			handleClick = {searchMovie}
+			/>
+
 		</>
 	);
 }
