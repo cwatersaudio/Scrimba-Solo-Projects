@@ -1,35 +1,43 @@
 import React from "react";
-
 import "./App.css";
 import Navbar from "./components/Navbar";
 
-//State: CURRENT MOVIES
-// STATE: WATCHLIST
-const {buttonStatus,setButtonStatus} = React.useState("watchlist")
-//fn:Movie Search
 
-function searchMovie(title) {
+
+export function App() {
+
+	const [buttonStatus, setButtonStatus] = React.useState("watchlist")
+
+
+	//State: CURRENT MOVIES
+	// STATE: WATCHLIST
+	//fn:Movie Search
+
+
 	// clearMovieArea();
 	//gets an array of movies
-	fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${title}`)
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-			if (data.Response) {
-				const movieResults = data.Search.map((item) => item.imdbID);
-			} else if (data.Response === false) {
-				throw Error;
-			}
-		})
-		.catch((err) => console.error("error in fetching"));
-}
 
-function App() {
+
+	function searchMovie(title) {
+		console.log(title)
+
+		fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${title}`)
+			.then((res) => res.json())
+			.then((data) => {
+				console.log(data);
+				if (data.Response) {
+					const movieResults = data.Search.map((item) => item.imdbID);
+				} else if (data.Response === false) {
+					throw Error;
+				}
+			})
+			.catch((err) => console.error("error in fetching"));
+	}
 	return (
 		<>
-			<Navbar 
-			buttonStatus = {buttonStatus}
-			handleClick = {searchMovie}
+			<Navbar
+				buttonStatus={buttonStatus}
+				searchMovie={searchMovie}
 			/>
 
 		</>
