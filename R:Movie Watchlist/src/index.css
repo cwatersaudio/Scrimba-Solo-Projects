@@ -12,3 +12,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+  background-color: #1C1C1C;
+  color: hsl(0, 0%, 88%);
+  font-family: 'Barlow', sans-serif;
+
+}

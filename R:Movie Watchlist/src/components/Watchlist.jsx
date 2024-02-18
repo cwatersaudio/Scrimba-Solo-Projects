@@ -4,6 +4,6 @@ import React from "react";
 
 //function to map through array and make <MovieCard />
 
-export default function Watchlist() {
+export default function WatchlistDisplay() {
 	return <></>;
 }

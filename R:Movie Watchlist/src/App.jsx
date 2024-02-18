@@ -1,6 +1,10 @@
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import SearchDisplay from "./components/SearchDisplay";
+import movieIcon from "./assets/Icon.svg"
+
+
 
 
 
@@ -27,8 +31,7 @@ export default function App() {
 				console.log(data);
 				if (data.Response) {
 					const movieResults = data.Search.map((item) => item.imdbID);
-					setCurrentMovies(movieResults) //current movies is here a list of IDs
-					getMovieData(currentMovies)
+					getMovieData(movieResults)
 				} else if (data.Response === false) {
 					throw Error;
 				}
@@ -37,10 +40,10 @@ export default function App() {
 	}
 
 
-	async function getMovieData(currentMovies) {
+	async function getMovieData(currentIDs) {
 		console.log('function ran')
-		let fullMovieData = []
-		for (const ID of currentMovies) {
+		const fullMovieData = []
+		for (const ID of currentIDs) {
 			const res = await fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`);
 			const movData = await res.json()
 			const currentMovie = {
@@ -54,7 +57,9 @@ export default function App() {
 			}
 			fullMovieData.push(currentMovie)
 			console.log(currentMovie)
+			console.log(fullMovieData)
 		}
+		setCurrentMovies(fullMovieData)
 	}
 
 
@@ -62,13 +67,34 @@ export default function App() {
 
 
 	return (
-		<>
+		<div className="app--container">
 			<Navbar
 				buttonStatus={buttonStatus}
 				searchMovie={searchMovie}
 			/>
+			<div className="movie--area">
+				<SearchDisplay
+					currentMovies={currentMovies}
+				/>
 
-		</>
+				{/* // (currentMovies.length > 0) ?
+				// 	<SearchDisplay
+				// 		currentMovies={currentMovies}
+				// 	/>
+					// :
+					// <div className="no--movies">
+					// 	<img
+					// 		src={movieIcon}
+					// 		alt="movie icon"
+					// 	/>
+					// 	<p className="dafault--text">Start Exploring</p>
+					// </div>
+				// } */}
+
+			</div>
+
+
+		</div >
 	);
 }
 
