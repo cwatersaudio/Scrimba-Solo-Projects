@@ -53,7 +53,8 @@ export default function App() {
 				runtime: movData.Runtime,
 				genre: movData.Genre,
 				plot: movData.Plot,
-				imdbID: movData.imdbID
+				imdbID: movData.imdbID,
+				watchlist: false
 			}
 			fullMovieData.push(currentMovie)
 			console.log(currentMovie)

@@ -7,7 +7,7 @@ export default function SearchDisplay({ currentMovies }) {
 	const searchResults = currentMovies.map((mov, index) => {
 
 		return (<MovieCard
-			key={index}
+			// key={index} //need an index here
 			movie={mov}
 		/>)
 
