@@ -12,7 +12,7 @@ export default function App() {
 
 	const [buttonStatus, setButtonStatus] = React.useState("watchlist")
 	const [currentMovies, setCurrentMovies] = React.useState([])
-
+	const [watchlist, setWatchlist] = React.useState([])
 	//State: CURRENT MOVIES
 	// STATE: WATCHLIST
 	//fn:Movie Search
@@ -63,6 +63,34 @@ export default function App() {
 		setCurrentMovies(fullMovieData)
 	}
 
+	function toggleWatchlist(ID) {
+		const indexToToggle = currentMovies.findIndex(item => item.imdbID === ID)
+		const newList = [...currentMovies]
+		newList[indexToToggle].watchlist = !newList[indexToToggle].watchlist
+		setCurrentMovies(newList)
+
+	}
+
+	function addToWatchlist(ID) {
+		const indexToAdd = currentMovies.findIndex(item => item.imdbID === ID)
+		const itemToAdd = currentMovies[indexToAdd]
+		toggleWatchlist(ID)
+		setWatchlist(prevList => {
+			return [
+				...prevList,
+				itemToAdd
+			]
+		})
+	}
+
+	function removeFromWatchlist(ID) {
+		const indexToRemove = watchlist.findIndex(item => item.imdbID === ID)
+		const newWatchlist = watchlist.splice(indexToRemove, 1)
+		toggleWatchlist(ID)
+		setWatchlist(newWatchlist)
+	}
+
+
 
 
 
@@ -76,6 +104,8 @@ export default function App() {
 			<div className="movie--area">
 				<SearchDisplay
 					currentMovies={currentMovies}
+					addToWatchlist={addToWatchlist}
+					removeFromWatchlist={removeFromWatchlist}
 				/>
 
 				{/* // (currentMovies.length > 0) ?
