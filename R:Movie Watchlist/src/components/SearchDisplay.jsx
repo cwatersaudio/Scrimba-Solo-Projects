@@ -1,7 +1,7 @@
 import React from "react";
 import { MovieCard } from "./MovieCard";
 
-export default function SearchDisplay({ currentMovies, addToWatchList, removeFromWatchlist }) {
+export default function SearchDisplay({ currentMovies, addToWatchlist, removeFromWatchlist }) {
 
 
 	const searchResults = currentMovies.map((mov) => {
@@ -9,7 +9,7 @@ export default function SearchDisplay({ currentMovies, addToWatchList, removeFro
 		return (<MovieCard
 			// key={index} //need an index here
 			movie={mov}
-			addToWatchlist={addToWatchList}
+			addToWatchlist={addToWatchlist}
 			removeFromWatchlist={removeFromWatchlist}
 		/>)
 
