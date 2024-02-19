@@ -84,8 +84,8 @@ export default function App() {
 	}
 
 	function removeFromWatchlist(ID) {
-		const indexToRemove = watchlist.findIndex(item => item.imdbID === ID)
-		const newWatchlist = watchlist.splice(indexToRemove, 1)
+		// const indexToRemove = watchlist.findIndex(item => item.imdbID === ID)
+		const newWatchlist = watchlist.filter(item => item.imdbID !== ID)
 		toggleWatchlist(ID)
 		setWatchlist(newWatchlist)
 	}
