@@ -149,7 +149,11 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
     }
 
     label:hover {
-        background-color: chartreuse;
+        background: #d6dbf599;
+    }
+
+    input[type="radio"]:checked+label {
+        background: #D6DBF5;
     }
 
     input {
