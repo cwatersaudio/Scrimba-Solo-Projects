@@ -17,8 +17,7 @@ const QuizPage = ({ triviaSet, answering, toggleAnswering }) => {
     return (
         <div className="quiz-container">
             {questionsUI}
-
-
+            <button type="button" className="quiz-button">Check Answers</button>
 
         </div>
 

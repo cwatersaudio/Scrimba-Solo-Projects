@@ -1,9 +1,9 @@
 .app--canvas {
-    height: 550px;
     width: 550px;
     background-color: azure;
     margin: 0 auto;
     position: relative;
+    padding: 40px 0;
 }
 
 
@@ -121,6 +121,16 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
     width: 318px;
 }
 
+.quiz-button {
+    background-color: #4d5b9e;
+    border-radius: 15px;
+    height: 52px;
+    position: relative;
+    width: 193px;
+    border: none;
+    align-self: center;
+}
+
 /* Quiz Styles */
 
 .quiz-container {
@@ -149,7 +159,7 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
     }
 
     label:hover {
-        background: #d6dbf599;
+        background: #f1f5d699;
     }
 
     input[type="radio"]:checked+label {
