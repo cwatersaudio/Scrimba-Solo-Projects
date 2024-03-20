@@ -1,0 +1,122 @@
+.app--canvas {
+    height: 550px;
+    width: 550px;
+    background-color: azure;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+
+My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index.jsx style.css .intro-page {
+    background-color: #f5f7fb;
+    height: 550px;
+    position: relative;
+    width: 550px;
+}
+
+.intro-page .overlap {
+    height: 54px;
+    left: 179px;
+    position: absolute;
+    top: 312px;
+    width: 195px;
+}
+
+.intro-page .text-wrapper {
+    color: #f5f7fb;
+    font-family: "Inter-Medium", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    left: 1px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 189px;
+}
+
+.intro-page .play-again-button {
+    height: 52px;
+    left: 0;
+    position: absolute;
+    top: 2px;
+    width: 195px;
+}
+
+.intro-page .overlap-group {
+    background-color: #4d5b9e;
+    border-radius: 15px;
+    height: 52px;
+    position: relative;
+    width: 193px;
+}
+
+.intro-page .div {
+    color: #f5f7fb;
+    font-family: "Inter-Medium", Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    left: 28px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 16px;
+    width: 136px;
+}
+
+.intro-page .blobs {
+    height: 118px;
+    left: 0;
+    position: absolute;
+    top: 432px;
+    width: 148px;
+}
+
+.intro-page .img {
+    height: 197px;
+    left: 356px;
+    position: absolute;
+    top: 0;
+    width: 194px;
+}
+
+.intro-page .header-nav {
+    height: 41px;
+    left: 70px;
+    position: absolute;
+    top: 218px;
+    width: 414px;
+}
+
+.intro-page .text-wrapper-2 {
+    color: #293264;
+    font-family: "Karla-Bold", Helvetica;
+    font-size: 31.2px;
+    font-weight: 700;
+    left: 0;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 412px;
+}
+
+.intro-page .text-wrapper-3 {
+    color: #293264;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    left: 117px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    text-align: center;
+    top: 265px;
+    white-space: nowrap;
+    width: 318px;
+}
