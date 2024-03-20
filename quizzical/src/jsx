@@ -1,0 +1,143 @@
+<div className="questions">
+    <img className="blobs" alt="Blobs" src="image.svg" />
+    <div className="overlap">
+        <div className="overlap-group">
+            <img className="img" alt="Blobs" src="blobs.svg" />
+            <div className="header-nav">
+                <p className="text-wrapper">
+                    Which best selling toy of 1983 caused hysteria, resulting in riots breaking in stores?
+                </p>
+            </div>
+            <div className="group">
+                <div className="div-wrapper">
+                    <div className="div">Rubik’s Cube</div>
+                </div>
+            </div>
+            <img className="line" alt="Line" src="line-11.svg" />
+        </div>
+        <div className="group-2">
+            <div className="header-nav-2">
+                <p className="p">How would one say goodbye in Spanish?</p>
+            </div>
+            <div className="overlap-group-wrapper">
+                <div className="overlap-group-2">
+                    <div className="text-wrapper-2">Adiós</div>
+                </div>
+            </div>
+            <div className="overlap-wrapper">
+                <div className="overlap-2">
+                    <div className="text-wrapper-3">Hola</div>
+                </div>
+            </div>
+            <div className="group-3">
+                <div className="overlap-2">
+                    <div className="text-wrapper-4">Au Revoir</div>
+                </div>
+            </div>
+            <div className="group-4">
+                <div className="overlap-2">
+                    <div className="text-wrapper-4">Salir</div>
+                </div>
+            </div>
+        </div>
+        <div className="group-wrapper">
+            <div className="group-5">
+                <div className="overlap-group-3">
+                    <div className="text-wrapper-5">Cabbage Patch Kids</div>
+                </div>
+            </div>
+        </div>
+        <div className="group-6">
+            <div className="group-7">
+                <div className="overlap-group-4">
+                    <div className="text-wrapper-6">Transformers</div>
+                </div>
+            </div>
+        </div>
+        <div className="group-8">
+            <div className="overlap-3">
+                <div className="text-wrapper-7">Care Bears</div>
+            </div>
+        </div>
+    </div>
+    <div className="header-nav-3">
+        <p className="p">What is the hottest planet in our Solar System?</p>
+    </div>
+    <div className="group-9">
+        <div className="overlap-group-2">
+            <div className="text-wrapper-8">Venus</div>
+        </div>
+    </div>
+    <div className="group-10">
+        <div className="overlap-2">
+            <div className="text-wrapper-4">Mars</div>
+        </div>
+    </div>
+    <div className="group-11">
+        <div className="overlap-2">
+            <div className="text-wrapper-4">Mercury</div>
+        </div>
+    </div>
+    <div className="group-12">
+        <div className="overlap-2">
+            <div className="text-wrapper-4">Saturn</div>
+        </div>
+    </div>
+    <div className="group-13">
+        <div className="header-nav-4">
+            <p className="text-wrapper-9">How Many Hearts Does An Octopus Have?</p>
+        </div>
+        <div className="group-14">
+            <div className="overlap-group-2">
+                <div className="text-wrapper-2">Three</div>
+            </div>
+        </div>
+        <div className="group-15">
+            <div className="overlap-2">
+                <div className="text-wrapper-4">Two</div>
+            </div>
+        </div>
+        <div className="group-16">
+            <div className="overlap-2">
+                <div className="text-wrapper-4">One</div>
+            </div>
+        </div>
+        <div className="group-17">
+            <div className="overlap-2">
+                <div className="text-wrapper-4">Four</div>
+            </div>
+        </div>
+    </div>
+    <div className="group-18">
+        <div className="header-nav-5">
+            <p className="text-wrapper">In which country was the caesar salad invented?</p>
+        </div>
+        <div className="group-19">
+            <div className="overlap-group-5">
+                <div className="text-wrapper-10">Italy</div>
+            </div>
+        </div>
+        <div className="group-20">
+            <div className="overlap-group-4">
+                <div className="text-wrapper-6">Portugal</div>
+            </div>
+        </div>
+        <div className="group-21">
+            <div className="overlap-3">
+                <div className="text-wrapper-7">Mexico</div>
+            </div>
+        </div>
+        <div className="group-22">
+            <div className="div-wrapper">
+                <div className="div">France</div>
+            </div>
+        </div>
+    </div>
+    <img className="line-2" alt="Line" src="line-13.svg" />
+    <img className="line-3" alt="Line" src="line-12.svg" />
+    <img className="line-4" alt="Line" src="line-14.svg" />
+    <img className="line-5" alt="Line" src="line-15.svg" />
+    <div className="overlap-4">
+        <div className="text-wrapper-11">Check answers</div>
+    </div>
+</div>

@@ -120,3 +120,44 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
     white-space: nowrap;
     width: 318px;
 }
+
+/* Quiz Styles */
+
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: #293264;
+    margin: 0 75px;
+}
+
+.question {
+    color: #293264;
+    /* font-family: Karla; */
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.choices {
+    label {
+        font-size: 12px;
+        border-radius: 7.71px;
+        border: 0.771px solid #4D5B9E;
+        padding: 3px 8px;
+    }
+
+    label:hover {
+        background-color: chartreuse;
+    }
+
+    input {
+        display: none;
+    }
+}
+
+.answer-choices {
+    display: flex;
+    justify-content: space-between;
+}
