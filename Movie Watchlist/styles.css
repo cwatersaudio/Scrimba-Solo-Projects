@@ -2,7 +2,7 @@ body {
     background-color: #1C1C1C;
     color: hsl(0, 0%, 88%);
     font-family: 'Barlow', sans-serif;
-    ;
+
 }
 
 h1 {
@@ -19,14 +19,15 @@ a {
     width: 550px;
     height: 779px;
     flex-shrink: 0;
-    border: 1px yellow solid;
     display: flex;
     flex-direction: column;
 }
 
 nav {
+    border: 2px blue solid;
     margin: 0;
-    height: 13rem;
+    height: 227px;
+    /* height: auto; */
     background: url('./assets/image-36.png'), rgba(91, 84, 84, 0.244) 0px -158.291px / 100% 423.007% no-repeat;
 }
 
@@ -34,7 +35,9 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin: 5rem 2.5rem 0;
+    margin: 4rem 2.5rem 0;
+
+    /* want to figure out how to move searchbar */
 
 
 }
@@ -50,9 +53,10 @@ nav {
 }
 
 #searchbar>input {
+    color: #ffffff;
     width: auto;
     flex-grow: 1;
-    padding: .5rem;
+    padding: 1rem;
     background: #2E2E2F;
     border: none
 }
@@ -64,8 +68,78 @@ nav {
     width: 120px;
 }
 
-.movie--area {
-    border: solid 1px blue;
+#movie--area {
+    padding-top: 2rem;
     display: flex;
     flex-direction: column;
+    overflow: scroll;
+}
+
+.movie--card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+hr {
+    border-top: 1.5px #A5A5A5 solid;
+    width: 80%;
+}
+
+.movie--poster {
+    height: 10rem;
+    width: 7rem;
+    margin-right: 1.3rem;
+}
+
+.movie--text {
+    display: flex;
+    flex-direction: column;
+}
+
+.movie--row {
+    display: flex;
+    gap: .25rem;
+    align-items: center;
+}
+
+.movie--text .title--rating {
+    justify-content: left;
+    gap: .5rem;
+}
+
+.movie--text .stats {
+    justify-content: left;
+    font-size: .75rem;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.description {
+    color: #A5A5A5;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin: 0;
+    max-height: 5rem;
+    overflow: hidden;
+}
+
+.movie--text a {
+    color: #ffffff;
+    font-size: .75rem;
+}
+
+.read-more {
+    display: none;
+}
+
+.description.show-more {
+    max-height: none;
+}
+
+.show-more .read-more {
+    display: inline;
 }
