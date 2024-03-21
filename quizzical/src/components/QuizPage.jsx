@@ -2,9 +2,12 @@ import React from 'react'
 import Question from './Question'
 
 
-const QuizPage = ({ triviaSet, answering, toggleAnswering }) => {
+const QuizPage = ({ triviaSet, answering, toggleAnswering, checkAnswers }) => {
 
-
+    function handleChange(id) {
+        //creates an array of answers to be passed to `checkAnswers`
+        //need an id of some kind for the answers to match them to triviaSet
+    }
     const questionsUI = triviaSet.map((item, index) => {
         return (
             <Question

@@ -18,7 +18,7 @@ function App() {
       const { correct_answer, incorrect_answers } = question
       return {
         correct: decode(correct_answer),
-        options: incorrect_answers.map(answer => decode(answer)), //need to find way to add correct answer 
+        options: incorrect_answers.map(answer => decode(answer)),
         questionText: decode(question.question)
       }
     })
@@ -30,11 +30,12 @@ function App() {
     setAnswering(prev => !prev)
   }
 
-  console.log(triviaSet)
-  //funstion that fetches triva and then sets state
+  function checkAnswers(answers) {
 
-  //question component
-  //four choices, styles based on state answered
+    toggleAnswering(false) //wait what's this supposed to do?
+  }
+  console.log(triviaSet)
+
   return (
 
     <div className='app--canvas'>
@@ -49,6 +50,7 @@ function App() {
           triviaSet={triviaSet}
           answering={answering}
           toggleAnswering={toggleAnswering}
+          checkAnswers={checkAnswers}
         />
       }
     </div >
