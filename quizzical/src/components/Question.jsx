@@ -10,6 +10,7 @@ const Question = ({ question, number }) => {
                 <Options
                     options={question.options}
                     number={number}
+                    correct={question.correct}
                 />
             </div>
             <hr />

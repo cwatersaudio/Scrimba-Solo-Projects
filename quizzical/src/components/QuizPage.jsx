@@ -10,6 +10,7 @@ const QuizPage = ({ triviaSet, answering, toggleAnswering }) => {
             <Question
                 question={item}
                 number={index}
+
             />
         )
     })
