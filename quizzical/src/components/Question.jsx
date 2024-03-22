@@ -1,7 +1,7 @@
 import React from 'react'
 import Options from './Options'
 
-const Question = ({ question, number }) => {
+const Question = ({ question, number, handleChange }) => {
 
     return (
         <div className="question--container">
@@ -11,6 +11,8 @@ const Question = ({ question, number }) => {
                     options={question.options}
                     number={number}
                     correct={question.correct}
+                    id={question.id}
+                    handleChange={handleChange}
                 />
             </div>
             <hr />

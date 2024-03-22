@@ -3,7 +3,7 @@ import { decode } from 'he'
 import './App.css'
 import QuizPage from './components/QuizPage'
 import IntroPage from './components/IntroPage'
-
+import { nanoid } from 'nanoid'
 function App() {
   const [begun, setBegun] = useState(false) //state for whether the game has begun
   const [answering, setAnswering] = useState(true)//state for whether we're answering or showing answers
@@ -19,7 +19,8 @@ function App() {
       return {
         correct: decode(correct_answer),
         options: incorrect_answers.map(answer => decode(answer)),
-        questionText: decode(question.question)
+        questionText: decode(question.question),
+        id: nanoid()
       }
     })
     setTriviaSet(trivia)
@@ -31,8 +32,8 @@ function App() {
   }
 
   function checkAnswers(answers) {
+    console.log(answers)
 
-    toggleAnswering(false) //wait what's this supposed to do?
   }
   console.log(triviaSet)
 
