@@ -32,8 +32,17 @@ function App() {
   }
 
   function checkAnswers(answers) {
-    console.log(answers)
 
+    const rightAnswers = triviaSet.map(q => q.correct)
+    let numberRight = 0
+    rightAnswers.forEach((answer, index) => {
+      if (answer === answers[index]) {
+        numberRight += 1
+      }
+
+
+    });
+    console.log(numberRight)
   }
   console.log(triviaSet)
 
