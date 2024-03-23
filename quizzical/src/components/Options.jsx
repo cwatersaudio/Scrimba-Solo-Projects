@@ -11,7 +11,7 @@ const Options = ({ options, number, correct, handleChange }) => {
                 console.log(`Choice ${index} redered`)
                 return (
                     <>
-                        <input type="radio" id={`choices${number},${index}`} name={`choices${number}`} value={option} onChange={handleChange} />
+                        <input type="radio" id={`choices${number},${index}`} name={`choices${number}`} value={option} onChange={() => handleChange(event, number)} />
                         <label htmlFor={`choices${number},${index}`}>{option}</label>
                     </>
                 )

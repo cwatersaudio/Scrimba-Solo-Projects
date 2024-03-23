@@ -3,13 +3,11 @@ import Question from './Question'
 
 
 const QuizPage = ({ triviaSet, answering, toggleAnswering, checkAnswers }) => {
-    let answers = {}
+    const answers = []
 
-    function handleChange(event) {
-        answers = {
-            ...answers,
-            [event.target.name]: event.target.value
-        }
+    function handleChange(event, i) {
+        answers[i] = event.target.value
+        console.log(answers)
     }
     //creates an array of answers to be passed to `checkAnswers`
     //need an id of some kind for the answers to match them to triviaSet
