@@ -5,8 +5,8 @@ import Question from './Question'
 const QuizPage = ({ triviaSet, answering, toggleAnswering, checkAnswers }) => {
     const answers = []
 
-    function handleChange(event, i) {
-        answers[i] = event.target.value
+    function updateAnswer(ans, i) {
+        answers[i] = ans
         console.log(answers)
     }
     //creates an array of answers to be passed to `checkAnswers`
@@ -19,7 +19,7 @@ const QuizPage = ({ triviaSet, answering, toggleAnswering, checkAnswers }) => {
                 question={item}
                 number={index}
                 key={item.id}
-                handleChange={handleChange}
+                updateAnswer={updateAnswer}
 
             />
         )

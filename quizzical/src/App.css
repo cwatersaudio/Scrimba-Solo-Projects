@@ -158,21 +158,7 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
         padding: 3px 8px;
     }
 
-    /* label:hover {
-        background: #f1f5d699;
-    }
 
-    input[type="radio"]:checked+label {
-        background: #D6DBF5;
-    } */
-
-    .opt-pressed {
-        background: #D6DBF5;
-    }
-
-    .opt-over {
-        background: #f1f5d699;
-    }
 
     input {
         display: none;
@@ -181,5 +167,17 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
 
 .answer-choices {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+.choice:hover {
+    background: #f1f5d699;
+}
+
+/* input[type="radio"]:checked+label {
+    background: #D6DBF5;
+} */
+
+.selected {
+    background: #D6DBF5;
 }

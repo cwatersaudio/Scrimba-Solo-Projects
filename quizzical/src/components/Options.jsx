@@ -1,16 +1,32 @@
 import React from 'react'
 
-const Options = ({ options, number, correct, handleChange }) => {
-    const allChoices = [...options] //had to spread 'options' in otherwise allChoices was being equated to 'options'
-    allChoices.splice((allChoices.length + 1) * Math.random() | 0, 0, correct) //inserts correct answer at random index
+const Options = ({ allChoices, number, correct, updateAnswer }) => {
+    const [selected, setSelected] = React.useState(null)
+
+    function handleSelect(event, i) {
+        console.log(event.target)
+        setSelected(event.target.value)
+        updateAnswer(selected, i)
+
+    }
+
     return (
 
         <div className='answer-choices'>
             {allChoices.map((option, index) => {
                 return (
                     <>
-                        <input type="radio" id={`choices${number},${index}`} name={`choices${number}`} value={option} onChange={() => handleChange(event, number)} />
-                        <label htmlFor={`choices${number},${index}`} >{option}</label >
+                        <input
+                            type="radio"
+                            id={`choices${number},${index}`}
+                            name={`choices${number}`}
+                            value={option}
+                            onChange={() => handleSelect(event, number)}
+
+                        />
+                        <label
+                            htmlFor={`choices${number},${index}`}
+                            className={`option ${option === selected ? "selected" : ""}`} >{option}</label >
                     </>
                 )
             })}
