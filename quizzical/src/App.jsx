@@ -6,7 +6,7 @@ import IntroPage from './components/IntroPage'
 import { nanoid } from 'nanoid'
 function App() {
   const [begun, setBegun] = useState(false) //state for whether the game has begun
-  const [answering, setAnswering] = useState(true)//state for whether we're answering or showing answers
+  // const [answering, setAnswering] = useState(true)//state for whether we're answering or showing answers
   const [triviaSet, setTriviaSet] = useState([])
   //method for toggling begun
   //OPTIONAL: State for questions difficulty and corresponding dropdown
@@ -27,23 +27,11 @@ function App() {
     setBegun(true)
   }
 
-  function toggleAnswering() {
-    setAnswering(prev => !prev)
-  }
-
-  function checkAnswers(answers) {
-
-    const rightAnswers = triviaSet.map(q => q.correct)
-    let numberRight = 0
-    rightAnswers.forEach((answer, index) => {
-      if (answer === answers[index]) {
-        numberRight += 1
-      }
+  // function toggleAnswering() {
+  //   setAnswering(prev => !prev)
+  // }
 
 
-    });
-    console.log(numberRight)
-  }
   console.log(triviaSet)
 
   return (
@@ -58,9 +46,6 @@ function App() {
         :
         <QuizPage
           triviaSet={triviaSet}
-          answering={answering}
-          toggleAnswering={toggleAnswering}
-          checkAnswers={checkAnswers}
         />
       }
     </div >
