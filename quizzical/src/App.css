@@ -181,3 +181,7 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
 .selected {
     background: #D6DBF5;
 }
+
+.correct {
+    background: yellow;
+}

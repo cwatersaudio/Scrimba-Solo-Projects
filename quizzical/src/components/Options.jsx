@@ -12,11 +12,27 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
         updateAnswer(selected, number)
     }, [selected])
 
+    function getStyles(choice) {
+        let styleString = "option "
+        if (showAnswers) {
+            if (choice === correct) {
+                styleString = + "correct"
+            }
+
+        } else if (choice === selected) {
+            styleString += "selected"
+        }
+        console.log(styleString)
+        return (styleString)
+    }
+
+
+
     return (
 
         <div className='answer-choices'>
             {allChoices.map((option, index) => {
-                let styles
+
 
                 return (
                     <>
@@ -30,7 +46,7 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
                         />
                         <label
                             htmlFor={`choices${number},${index}`}
-                            className={`option ${option === selected ? "selected" : ""}`}
+                            className={`option ${getStyles(option)}`}
                         >{option}</label >
                     </>
                 )
