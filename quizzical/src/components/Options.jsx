@@ -30,7 +30,7 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
                         />
                         <label
                             htmlFor={`choices${number},${index}`}
-                            className={`option `}
+                            className={`option ${option === selected ? "selected" : ""}`}
                         >{option}</label >
                     </>
                 )
