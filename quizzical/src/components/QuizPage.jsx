@@ -4,7 +4,7 @@ import Question from './Question'
 
 const QuizPage = ({ triviaSet, begun }) => {
     const answers = []
-    let numberRight = 0
+    let numberRight
     const [showAnswers, setShowAnswers] = React.useState(false)
 
     function updateAnswer(ans, i) {
@@ -30,17 +30,19 @@ const QuizPage = ({ triviaSet, begun }) => {
     })
 
     function checkAnswers(answers) {
-        setShowAnswers(true)
+
 
         const rightAnswers = triviaSet.map(q => q.correct)
-        rightAnswers.forEach((answer, index) => {
-            if (answer === answers[index]) {
+        rightAnswers.forEach((rAnswer, index) => {
+            if (rAnswer === answers[index]) {
                 numberRight += 1
             }
 
 
         });
         console.log(numberRight)
+        setShowAnswers(true)
+        return numberRight
     }
 
     return (
@@ -55,7 +57,8 @@ const QuizPage = ({ triviaSet, begun }) => {
                     <p>You got {numberRight}/5 correct!</p>
                     <button type="button"
                         className="quiz-button"
-                        onClick={setBegun(false)}>Play Again
+                        onClick={() => checkAnswers(answers)}
+                    >Play Again
                     </button>
                 </div>}
 

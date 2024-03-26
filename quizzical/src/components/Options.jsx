@@ -14,18 +14,21 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
 
     function getStyles(choice) {
         let styleString = "option "
-        // if (showAnswers) {
-        //     if (choice === correct) {
-        //         styleString = + "correct"
-        //     }
+        if (showAnswers) {
+            if (choice === correct && choice === selected) {
+                styleString += "correct"
+            } else if (choice === selected && choice !== correct) {
+                styleString += 'incorrect'
+            } else if (choice === correct) {
+                styleString += 'right'
+            }
 
-        if (choice === selected) {
+        } else if (choice === selected) {
             styleString += "selected"
         }
-        if (choice === correct) {
-            styleString += "correctt"
 
-        }
+
+
         console.log(styleString)
         return (styleString)
     }

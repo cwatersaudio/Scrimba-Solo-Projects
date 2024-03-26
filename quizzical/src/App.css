@@ -185,9 +185,13 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
 }
 
 .correct {
-    background: yellow;
+    background: greenyellow;
 }
 
-.correctt {
-    background: purple;
+.incorrect {
+    background: red;
+}
+
+.right {
+    background: orange;
 }
