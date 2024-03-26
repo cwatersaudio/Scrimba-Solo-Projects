@@ -1,9 +1,11 @@
 .app--canvas {
     width: 550px;
+    height: 550px;
     background-color: azure;
     margin: 0 auto;
     position: relative;
     padding: 40px 0;
+    overflow: scroll;
 }
 
 
@@ -184,4 +186,8 @@ My Team Upgrade Feedback Intro-Page Breakpoints Show preview React jsx+CSS index
 
 .correct {
     background: yellow;
+}
+
+.correctt {
+    background: purple;
 }

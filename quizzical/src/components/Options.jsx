@@ -14,13 +14,17 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
 
     function getStyles(choice) {
         let styleString = "option "
-        if (showAnswers) {
-            if (choice === correct) {
-                styleString = + "correct"
-            }
+        // if (showAnswers) {
+        //     if (choice === correct) {
+        //         styleString = + "correct"
+        //     }
 
-        } else if (choice === selected) {
+        if (choice === selected) {
             styleString += "selected"
+        }
+        if (choice === correct) {
+            styleString += "correctt"
+
         }
         console.log(styleString)
         return (styleString)
@@ -46,7 +50,7 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
                         />
                         <label
                             htmlFor={`choices${number},${index}`}
-                            className={`option ${getStyles(option)}`}
+                            className={` ${getStyles(option)}`}
                         >{option}</label >
                     </>
                 )

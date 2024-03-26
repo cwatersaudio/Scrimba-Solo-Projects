@@ -46,6 +46,7 @@ function App() {
         :
         <QuizPage
           triviaSet={triviaSet}
+          begun={begun}
         />
       }
     </div >
