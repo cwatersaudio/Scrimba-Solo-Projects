@@ -2,11 +2,11 @@ import React from 'react'
 
 const QuizParams = () => {
 
-    const QuizTopics = () => {
+    const QuizTopics = ({ className }) => {
         return (
-            <>
-                <label for="trivia_category">Select Category: </label>
-                <select name="trivia_category" className="form-control">
+            <div className={className}>
+                <label for="trivia_category">Select Category:</label>
+                <select name="trivia_category" className='param-input'>
                     <option value="any">Any Category</option>
                     <option value="9">General Knowledge</option>
                     <option value="10">Entertainment: Books</option>
@@ -33,14 +33,14 @@ const QuizParams = () => {
                     <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
                     <option value="32">Entertainment: Cartoon &amp; Animations</option>
                 </select>
-            </>
+            </div>
         )
     }
-    const QuizDifficulty = () => {
+    const QuizDifficulty = ({ className }) => {
         return (
-            <div>
+            <div className={className}>
                 <label for="trivia_difficulty">Select Difficulty: </label>
-                <select name="trivia_difficulty" class="form-control">
+                <select name="trivia_difficulty" className='param-input'>
                     <option value="any">Any Difficulty</option>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
@@ -52,12 +52,22 @@ const QuizParams = () => {
     }
 
     return (
-        <>
-            <QuizDifficulty />
-            <QuizTopics />
+        <div className='quiz-params'>
+            <div className='number-param param'>
+                <label htmlFor="numberOfQuestions">How many questions?</label>
+
+                <input type="text" className='param-input' inputMode="numeric" id="numberOfQuestions" min="5" max="25" />
+            </div>
+
+            <QuizDifficulty
+                className='param'
+            />
+            <QuizTopics
+                className='param'
+            />
 
 
-        </>
+        </div>
     )
 }
 
