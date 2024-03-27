@@ -7,6 +7,7 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
         console.log(event.target)
         setSelected(event.target.value)
 
+
     }
     React.useEffect(() => {
         updateAnswer(selected, number)
@@ -29,7 +30,6 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
 
 
 
-        console.log(styleString)
         return (styleString)
     }
 

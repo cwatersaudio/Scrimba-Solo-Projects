@@ -4,8 +4,8 @@ import Question from './Question'
 
 const QuizPage = ({ triviaSet, begun }) => {
     const answers = []
-    let numberRight
     const [showAnswers, setShowAnswers] = React.useState(false)
+    const [numberRight, setNumberRight] = React.useState(0)
 
     function updateAnswer(ans, i) {
         answers[i] = ans
@@ -31,18 +31,20 @@ const QuizPage = ({ triviaSet, begun }) => {
 
     function checkAnswers(answers) {
 
+        setShowAnswers(true)
+        getNumberRight(answers)
+    }
 
+    function getNumberRight(answers) {
+        let rightOnes = 0
         const rightAnswers = triviaSet.map(q => q.correct)
         rightAnswers.forEach((rAnswer, index) => {
             if (rAnswer === answers[index]) {
-                numberRight += 1
+                rightOnes += 1
             }
 
-
         });
-        console.log(numberRight)
-        setShowAnswers(true)
-        return numberRight
+        setNumberRight(rightOnes) //why did I need to store this in state?  Why did returning a number from a function not work?
     }
 
     return (
