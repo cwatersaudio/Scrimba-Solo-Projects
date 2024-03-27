@@ -15,7 +15,8 @@ const QuizPage = ({ triviaSet, begun }) => {
     //need an id of some kind for the answers to match them to triviaSet
 
     const questionsUI = triviaSet.map((item, index) => {
-
+        const allChoices = [...item.options] //had to spread 'options' in otherwise allChoices was being equated to 'options'
+        allChoices.splice((allChoices.length + 1) * Math.random() | 0, 0, item.correct) //inserts correct answer at random index
         return (
             <Question
                 question={item}
@@ -23,6 +24,7 @@ const QuizPage = ({ triviaSet, begun }) => {
                 key={item.id}
                 updateAnswer={updateAnswer}
                 showAnswers={showAnswers}
+                allChoices={allChoices}
 
             />
 
@@ -31,8 +33,13 @@ const QuizPage = ({ triviaSet, begun }) => {
 
     function checkAnswers(answers) {
 
-        setShowAnswers(true)
-        getNumberRight(answers)
+        if (answers.every(ans => ans !== null)) {
+            setShowAnswers(true)
+            getNumberRight(answers)
+        } else {
+            console.log('one of these is not filled out') //implement feature where it highlights missing question
+        }
+
     }
 
     function getNumberRight(answers) {
