@@ -27,9 +27,9 @@ function App() {
     setBegun(true)
   }
 
-  // function toggleAnswering() {
-  //   setAnswering(prev => !prev)
-  // }
+  function restartGame() {
+    setBegun(false)
+  }
 
 
   console.log(triviaSet)
@@ -46,7 +46,7 @@ function App() {
         :
         <QuizPage
           triviaSet={triviaSet}
-          begun={begun}
+          restartGame={restartGame}
         />
       }
     </div >

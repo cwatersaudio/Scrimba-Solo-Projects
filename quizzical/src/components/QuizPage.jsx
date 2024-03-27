@@ -2,7 +2,7 @@ import React from 'react'
 import Question from './Question'
 
 
-const QuizPage = ({ triviaSet, begun }) => {
+const QuizPage = ({ triviaSet, begun, restartGame }) => {
     const answers = []
     const [showAnswers, setShowAnswers] = React.useState(false)
     const [numberRight, setNumberRight] = React.useState(0)
@@ -66,14 +66,15 @@ const QuizPage = ({ triviaSet, begun }) => {
                     <p>You got {numberRight}/5 correct!</p>
                     <button type="button"
                         className="quiz-button"
-                        onClick={() => checkAnswers(answers)}
+                        onClick={restartGame}
                     >Play Again
                     </button>
                 </div>}
 
-        </div>
+        </div >
 
     )
 }
 
 export default QuizPage
+
