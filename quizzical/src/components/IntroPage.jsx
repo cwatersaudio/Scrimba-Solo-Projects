@@ -1,8 +1,12 @@
 import React from 'react'
+import QuizParams from './QuizParams'
 
 const IntroPage = (props) => {
     return (
         <div className="intro-page">
+            <div className='options-container'>
+                <QuizParams />
+            </div>
             <div className="overlap">
                 <div className="text-wrapper">Start quiz</div>
                 <div className="play-again-button">
@@ -21,3 +25,4 @@ const IntroPage = (props) => {
 }
 
 export default IntroPage
+
