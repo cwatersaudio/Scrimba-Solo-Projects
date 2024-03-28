@@ -3,11 +3,31 @@ import React from 'react'
 const QuizParams = ({ handleParamsChange, params }) => {
 
     const QuizTopics = ({ className }) => {
+
+        const getTopicsElements = async () => {
+            const optionsHTML
+            const res = await fetch('https://opentdb.com/api_category.php')
+            const data = await res.json()
+            const topicsElements = data.trivia_categories.map(topic => {
+                return (
+                    <option
+                        key={topic.id}
+                        value={topic.id}
+                    >
+                        {topic.name}
+                    </option>
+                )
+            })
+
+            return
+        }
+
+
         return (
             <div className={className}>
                 <label for="category">Select Category:</label>
                 <select name="category" className='param-input' onChange={handleParamsChange} value={params.category}>
-                    <option value="any">Any Category</option>
+                    {/* <option value="any">Any Category</option>
                     <option value="9">General Knowledge</option>
                     <option value="10">Entertainment: Books</option>
                     <option value="11">Entertainment: Film</option>
@@ -31,7 +51,11 @@ const QuizParams = ({ handleParamsChange, params }) => {
                     <option value="29">Entertainment: Comics</option>
                     <option value="30">Science: Gadgets</option>
                     <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
-                    <option value="32">Entertainment: Cartoon &amp; Animations</option>
+                    <option value="32">Entertainment: Cartoon &amp; Animations</option> */}
+                    {getTopicsElements
+                    }
+
+
                 </select>
             </div>
         )

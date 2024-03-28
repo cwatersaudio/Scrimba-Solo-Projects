@@ -6,7 +6,6 @@ import IntroPage from './components/IntroPage'
 import { nanoid } from 'nanoid'
 function App() {
   const [begun, setBegun] = useState(false) //state for whether the game has begun
-  // const [answering, setAnswering] = useState(true)//state for whether we're answering or showing answers
   const [triviaSet, setTriviaSet] = useState([])
 
 
@@ -28,6 +27,7 @@ function App() {
   async function getTrivia() {
     const res = await fetch(`https://opentdb.com/api.php?amount=${params.number}&category=${params.category}&type=multiple`)
     const data = await res.json()
+    console.log(data)
     const trivia = data.results.map(question => {
       const { correct_answer, incorrect_answers } = question
       return {
