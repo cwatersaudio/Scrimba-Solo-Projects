@@ -1,12 +1,12 @@
 import React from 'react'
 
-const QuizParams = () => {
+const QuizParams = ({ handleParamsChange, params }) => {
 
     const QuizTopics = ({ className }) => {
         return (
             <div className={className}>
-                <label for="trivia_category">Select Category:</label>
-                <select name="trivia_category" className='param-input'>
+                <label for="category">Select Category:</label>
+                <select name="category" className='param-input' onChange={handleParamsChange} value={params.category}>
                     <option value="any">Any Category</option>
                     <option value="9">General Knowledge</option>
                     <option value="10">Entertainment: Books</option>
@@ -39,8 +39,8 @@ const QuizParams = () => {
     const QuizDifficulty = ({ className }) => {
         return (
             <div className={className}>
-                <label for="trivia_difficulty">Select Difficulty: </label>
-                <select name="trivia_difficulty" className='param-input'>
+                <label for="difficulty">Select Difficulty: </label>
+                <select name="difficulty" className='param-input' onChange={handleParamsChange} value={params.difficulty}>
                     <option value="any">Any Difficulty</option>
                     <option value="easy">Easy</option>
                     <option value="medium">Medium</option>
@@ -52,11 +52,11 @@ const QuizParams = () => {
     }
 
     return (
-        <div className='quiz-params'>
+        <form className='quiz-params'>
             <div className='number-param param'>
                 <label htmlFor="numberOfQuestions">How many questions?</label>
 
-                <input type="text" className='param-input' inputMode="numeric" id="numberOfQuestions" min="5" max="25" />
+                <input type="text" className='param-input' inputMode="numeric" id="numberOfQuestions" min="5" max="25" onChange={handleParamsChange} value={params.number} name="number" />
             </div>
 
             <QuizDifficulty
@@ -67,7 +67,7 @@ const QuizParams = () => {
             />
 
 
-        </div>
+        </form>
     )
 }
 

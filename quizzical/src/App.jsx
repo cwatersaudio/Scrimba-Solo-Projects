@@ -8,11 +8,25 @@ function App() {
   const [begun, setBegun] = useState(false) //state for whether the game has begun
   // const [answering, setAnswering] = useState(true)//state for whether we're answering or showing answers
   const [triviaSet, setTriviaSet] = useState([])
-  //method for toggling begun
-  //OPTIONAL: State for questions difficulty and corresponding dropdown
+
+
+
+  const [params, setParams] = useState({
+    number: 10,
+    category: 'any',
+    difficulty: 'any'
+  })
+
+  function handleParamsChange(e) {
+    setParams({
+      ...params,
+      [e.target.name]: e.target.value
+    })
+  }
+
 
   async function getTrivia() {
-    const res = await fetch('https://opentdb.com/api.php?amount=5&category=12&type=multiple')
+    const res = await fetch(`https://opentdb.com/api.php?amount=${params.number}&category=${params.category}&type=multiple`)
     const data = await res.json()
     const trivia = data.results.map(question => {
       const { correct_answer, incorrect_answers } = question
@@ -42,6 +56,8 @@ function App() {
       {!begun ?
         <IntroPage
           getTrivia={getTrivia}
+          handleParamsChange={handleParamsChange}
+          params={params}
         />
         :
         <QuizPage

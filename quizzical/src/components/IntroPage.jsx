@@ -1,14 +1,21 @@
 import React from 'react'
 import QuizParams from './QuizParams'
 
-const IntroPage = (props) => {
+const IntroPage = ({ params, handleParamsChange, getTrivia }) => {
+
     return (
         <div className="intro-page">
             <h1 >Quizzical</h1>
             <h3 >Some description if needed</h3>
-            <QuizParams />
+            <QuizParams
+                params={params}
+                handleParamsChange={handleParamsChange}
+            />
 
-            <button type="button" className="quiz-button" onClick={props.getTrivia}>Start quiz</button>
+            <button
+                type="button"
+                className="quiz-button"
+                onClick={getTrivia}>Start quiz</button>
         </div>)
 }
 

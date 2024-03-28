@@ -1,7 +1,7 @@
 .app--canvas {
     width: 550px;
-    height: 90vh;
-    /* background-color: azure; */
+    min-height: 550px;
+    background-color: azure;
     margin: 0 auto;
     position: relative;
     padding: 20px 0;
@@ -13,10 +13,9 @@
 
 .intro-page {
     padding: 10px;
-    background-color: #273f6e;
-    height: 550px;
+    /* background-color: #273f6e; */
     position: relative;
-    width: 550px;
+    width: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -33,7 +32,6 @@
         left: 0;
         letter-spacing: 0;
         line-height: normal;
-        position: absolute;
         text-align: center;
         top: 0;
         width: 412px;
@@ -47,7 +45,6 @@
         left: 117px;
         letter-spacing: 0;
         line-height: normal;
-        position: absolute;
         text-align: center;
         top: 265px;
         white-space: nowrap;
@@ -69,6 +66,8 @@
 }
 
 .quiz-params {
+    color: #293264;
+
     display: flex;
     flex-direction: column;
     justify-content: space-around;
