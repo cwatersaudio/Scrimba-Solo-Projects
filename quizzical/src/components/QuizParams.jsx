@@ -3,18 +3,22 @@ import Dropdown from './Dropdown'
 
 const QuizParams = ({ handleParamsChange, params }) => {
 
-    const quiztopics = async () => {
-        const res = await fetch('https://opentdb.com/api_category.php')
-        const data = await res.json()
-        const topics = await data.trivia_categories.map(topic => {
-            return {
-                key: topic.id,
-                value: topic.name,
-                label: topic.name
+    const quiztopics = () => {
+        const getTopics = async () => {
+            const res = await fetch('https://opentdb.com/api_category.php')
+            const data = await res.json()
+            const topics = await data.trivia_categories.map(topic => {
+                return {
+                    key: topic.id,
+                    value: topic.name,
+                    label: topic.name
+                }
             }
-        }
 
-        )
+            )
+            return topics
+        }
+        const topics = getTopics()
         return topics
     }
 
@@ -99,16 +103,16 @@ const QuizParams = ({ handleParamsChange, params }) => {
                 value={params.difficulty}
             />
 
-            {/* <Dropdown
+            <Dropdown
                 id='topic'
                 className='param'
                 onChange={handleParamsChange}
                 title='Topic'
-                dropDownChoices={quiztopics}
+                dropDownChoices={quiztopics()}
                 value={params.topic}
 
 
-            /> */}
+            />
 
 
 

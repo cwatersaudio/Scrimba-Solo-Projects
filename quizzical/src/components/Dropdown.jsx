@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Dropdown = ({ dropDownChoices, title, id, onChange, value, className }) => {
+    console.log(dropDownChoices)
     function generateOptions() {
         return dropDownChoices.map((choice, index) => {
             return <option key={`${id} ${index}`} value={choice.value}>{choice.label}</option>
