@@ -6,7 +6,6 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
     const answers = []
     const [showAnswers, setShowAnswers] = React.useState(false)
     const [numberRight, setNumberRight] = React.useState(0)
-    const [hiUnanswered, setHiUnanswered] = React.useState(false)
 
     function updateAnswer(ans, i) {
         answers[i] = ans
@@ -26,7 +25,6 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
                 updateAnswer={updateAnswer}
                 showAnswers={showAnswers}
                 allChoices={allChoices}
-                hiUnaswered={hiUnanswered}
                 answers={answers}
 
             />

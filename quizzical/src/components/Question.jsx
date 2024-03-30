@@ -2,11 +2,10 @@ import React from 'react'
 import Options from './Options'
 import Option from './Option'
 
-const Question = ({ allChoices, question, number, updateAnswer, showAnswers, hiUnaswered, answers }) => {
+const Question = ({ allChoices, question, number, updateAnswer, showAnswers, }) => {
 
     return (
-        <div className={hiUnaswered && answers[number] === null ? "question--container unanswered" : "question--container"
-        }>
+        <div className={"question--container"}>
             <p className="question">{question.questionText}</p>
             <div className="choices">
 
@@ -20,7 +19,7 @@ const Question = ({ allChoices, question, number, updateAnswer, showAnswers, hiU
                 />
             </div>
             <hr />
-        </div >
+        </div>
 
     )
 }

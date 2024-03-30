@@ -54,8 +54,6 @@ function App() {
   return (
 
     <div className='app--canvas'>
-      {/*AI generated */}
-
       {!begun ?
         <IntroPage
           getTrivia={getTrivia}
