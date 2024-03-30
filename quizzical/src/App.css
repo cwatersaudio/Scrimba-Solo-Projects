@@ -156,3 +156,7 @@
 .right {
     background: orange;
 }
+
+.unanswered {
+    background: rgba(255, 0, 0, 0.201);
+}

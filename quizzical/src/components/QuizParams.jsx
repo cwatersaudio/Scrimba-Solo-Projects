@@ -81,7 +81,7 @@ const QuizParams = ({ handleParamsChange, params }) => {
     }
 
     const difficulties = [
-        { value: 'any', label: 'Any Difficulty' },
+        { value: '', label: 'Any Difficulty' },
         { value: 'easy', label: 'Easy' },
         { value: 'medium', label: 'Medium' },
         { value: 'hard', label: 'Hard' },

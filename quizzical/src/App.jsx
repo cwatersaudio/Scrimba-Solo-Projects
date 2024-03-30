@@ -13,7 +13,7 @@ function App() {
   const [params, setParams] = useState({
     number: 10,
     category: 9,
-    difficulty: 'any'
+    difficulty: ''
   })
 
   function handleParamsChange(e) {
@@ -25,7 +25,7 @@ function App() {
 
 
   async function getTrivia() {
-    const fetchURL = `https://opentdb.com/api.php?amount=${params.number}&category=${params.category}&difficulty=${params.difficulty}&type=multiple`
+    const fetchURL = `https://opentdb.com/api.php?amount=${params.number}&category=${params.category}${params.difficulty !== '' ? `&difficulty=${params.difficulty}` : ''}&type=multiple`
     const res = await fetch(fetchURL)
     const data = await res.json()
     console.log(data)
