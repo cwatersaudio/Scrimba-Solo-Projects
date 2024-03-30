@@ -1,4 +1,5 @@
 import React from 'react'
+import Dropdown from './Dropdown'
 
 const QuizParams = ({ handleParamsChange, params }) => {
 
@@ -70,6 +71,14 @@ const QuizParams = ({ handleParamsChange, params }) => {
 
 
     }
+    const difficulties = [
+        { value: 'any', label: 'Any Difficulty' },
+        { value: 'easy', label: 'Easy' },
+        { value: 'medium', label: 'Medium' },
+        { value: 'hard', label: 'Hard' },
+    ]
+
+
 
     return (
         <form className='quiz-params'>
@@ -82,9 +91,18 @@ const QuizParams = ({ handleParamsChange, params }) => {
             <QuizDifficulty
                 className='param'
             />
-            <QuizTopics
+            <Dropdown
+                id='difficulty'
                 className='param'
+                onChange={handleParamsChange}
+                title='Difficulty'
+                dropDownChoices={difficulties}
+                values
+
             />
+            {/* <QuizTopics
+                className='param'
+            /> */}
 
 
         </form>
