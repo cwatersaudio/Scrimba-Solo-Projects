@@ -8,10 +8,11 @@ const QuizParams = ({ handleParamsChange, params }) => {
     async function getTopics() {
         const res = await fetch('https://opentdb.com/api_category.php')
         const data = await res.json()
+        console.log(data)
         const topics = data.trivia_categories.map(topic => {
             return {
                 key: topic.id,
-                value: topic.name,
+                value: topic.id,
                 label: topic.name
             }
         })
@@ -111,7 +112,7 @@ const QuizParams = ({ handleParamsChange, params }) => {
                 onChange={handleParamsChange}
                 title='Topic'
                 dropDownChoices={quizTopics}
-                value={params.category}
+                value={params.category.id}
 
 
             />
