@@ -3,25 +3,40 @@ import Dropdown from './Dropdown'
 
 const QuizParams = ({ handleParamsChange, params }) => {
 
+    const quiztopics = async () => {
+        const res = await fetch('https://opentdb.com/api_category.php')
+        const data = await res.json()
+        const topics = await data.trivia_categories.map(topic => {
+            return {
+                key: topic.id,
+                value: topic.name,
+                label: topic.name
+            }
+        }
+
+        )
+        return topics
+    }
+
+
+    const quizdifficulties = async () => {
+        const res = await fetch('https://opentdb.com/api_difficulty.php')
+        const data = await res.json()
+        const difficulties = data.difficulty_list.map(difficulty => {
+            return {
+                key: difficulty.id,
+                value: difficulty.name,
+                label: difficulty.name
+            }
+        }
+
+        )
+        return difficulties
+    }
+
     const QuizTopics = ({ className }) => {
 
-        // const getTopicsElements = async () => {
-        //     const optionsHTML
-        //     const res = await fetch('https://opentdb.com/api_category.php')
-        //     const data = await res.json()
-        //     const topicsElements = data.trivia_categories.map(topic => {
-        //         return (
-        //             <option
-        //                 key={topic.id}
-        //                 value={topic.id}
-        //             >
-        //                 {topic.name}
-        //             </option>
-        //         )
-        //     })
 
-        //     return
-        // }
 
 
         return (
@@ -57,20 +72,7 @@ const QuizParams = ({ handleParamsChange, params }) => {
             </div>
         )
     }
-    const QuizDifficulty = ({ className }) => {
-        return (
-            <div className={className}>
-                <label for="difficulty">Select Difficulty: </label>
-                <select name="difficulty" className='param-input' onChange={handleParamsChange} value={params.difficulty}>
-                    <option value="any">Any Difficulty</option>
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
-            </div>)
 
-
-    }
     const difficulties = [
         { value: 'any', label: 'Any Difficulty' },
         { value: 'easy', label: 'Easy' },
@@ -88,21 +90,26 @@ const QuizParams = ({ handleParamsChange, params }) => {
                 <input type="text" className='param-input' inputMode="numeric" id="numberOfQuestions" min="5" max="25" onChange={handleParamsChange} value={params.number} name="number" />
             </div>
 
-            <QuizDifficulty
-                className='param'
-            />
             <Dropdown
                 id='difficulty'
                 className='param'
                 onChange={handleParamsChange}
                 title='Difficulty'
                 dropDownChoices={difficulties}
-                values
-
+                value={params.difficulty}
             />
-            {/* <QuizTopics
+
+            {/* <Dropdown
+                id='topic'
                 className='param'
+                onChange={handleParamsChange}
+                title='Topic'
+                dropDownChoices={quiztopics}
+                value={params.topic}
+
+
             /> */}
+
 
 
         </form>
