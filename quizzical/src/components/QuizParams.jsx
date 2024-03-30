@@ -2,28 +2,30 @@ import React from 'react'
 import Dropdown from './Dropdown'
 
 const QuizParams = ({ handleParamsChange, params }) => {
+    const [quizTopics, setQuizTopics] = React.useState([])
 
-    const quiztopics = () => {
-        const getTopics = async () => {
-            const res = await fetch('https://opentdb.com/api_category.php')
-            const data = await res.json()
-            const topics = await data.trivia_categories.map(topic => {
-                return {
-                    key: topic.id,
-                    value: topic.name,
-                    label: topic.name
-                }
+
+    async function getTopics() {
+        const res = await fetch('https://opentdb.com/api_category.php')
+        const data = await res.json()
+        const topics = data.trivia_categories.map(topic => {
+            return {
+                key: topic.id,
+                value: topic.name,
+                label: topic.name
             }
-
-            )
-            return topics
-        }
-        const topics = getTopics()
+        })
         return topics
     }
 
+    React.useState(() => {
+        getTopics().then(topics => {
+            setQuizTopics(topics)
+        })
+    }, [])
 
-    const quizdifficulties = async () => {
+
+    const quizdifficulties = async () => { //this is the hard coded version of the diffiulties
         const res = await fetch('https://opentdb.com/api_difficulty.php')
         const data = await res.json()
         const difficulties = data.difficulty_list.map(difficulty => {
@@ -108,7 +110,7 @@ const QuizParams = ({ handleParamsChange, params }) => {
                 className='param'
                 onChange={handleParamsChange}
                 title='Topic'
-                dropDownChoices={quiztopics()}
+                dropDownChoices={quizTopics}
                 value={params.topic}
 
 
