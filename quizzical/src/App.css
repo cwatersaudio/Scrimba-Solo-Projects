@@ -83,6 +83,7 @@
     display: flex;
 
     .param-input {
+        color: inherit;
         margin-left: 5px;
 
         background: none;

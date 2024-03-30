@@ -106,12 +106,12 @@ const QuizParams = ({ handleParamsChange, params }) => {
             />
 
             <Dropdown
-                id='topic'
+                id='category'
                 className='param'
                 onChange={handleParamsChange}
                 title='Topic'
                 dropDownChoices={quizTopics}
-                value={params.topic}
+                value={params.category}
 
 
             />

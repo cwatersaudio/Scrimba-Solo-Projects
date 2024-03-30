@@ -47,6 +47,7 @@ function App() {
 
 
   console.log(triviaSet)
+  console.log(params)
 
   return (
 
