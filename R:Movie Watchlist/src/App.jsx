@@ -13,6 +13,7 @@ export default function App() {
 	const [buttonStatus, setButtonStatus] = React.useState("watchlist")
 	const [currentMovies, setCurrentMovies] = React.useState([])
 	const [watchlist, setWatchlist] = React.useState([])
+	const [loading, setLoading] = React.useState(false)
 	//State: CURRENT MOVIES
 	// STATE: WATCHLIST
 	//fn:Movie Search
@@ -23,6 +24,7 @@ export default function App() {
 	React.useState
 
 	function searchMovie(title) {
+		setLoading(true)
 		if (title.length > 0) {
 			fetch(`http://www.omdbapi.com/?apikey=a8022ea&s=${title}`)
 				.then((res) => res.json())
@@ -36,6 +38,7 @@ export default function App() {
 					}
 				})
 				.catch((err) => {
+					setLoading(false)
 					console.error("error in fetching")
 
 				}
@@ -45,7 +48,6 @@ export default function App() {
 
 
 	async function getMovieData(currentIDs) {
-		console.log('function ran')
 		const fullMovieData = []
 		for (const ID of currentIDs) {
 			const res = await fetch(`http://www.omdbapi.com/?apikey=a8022ea&i=${ID}`);
@@ -65,6 +67,7 @@ export default function App() {
 			console.log(fullMovieData)
 		}
 		setCurrentMovies(fullMovieData)
+		setLoading(false)
 	}
 
 	function toggleWatchlist(ID) {
@@ -115,21 +118,33 @@ export default function App() {
 					removeFromWatchlist={removeFromWatchlist}
 				/>
 
-				{(currentMovies.length > 0) ?
-					<SearchDisplay
-						currentMovies={currentMovies}
-						addToWatchlist={addToWatchlist}
-						removeFromWatchlist={removeFromWatchlist}
-					/>
-					:
+				{loading ?
 					<div className="no--movies">
 						<img
 							src={movieIcon}
 							alt="movie icon"
 						/>
-						<p className="dafault--text">Start Exploring</p>
-					</div>
+						<p className="dafault--text">Loading...</p>
+					</div> :
+					(currentMovies.length > 0) ?
+						<SearchDisplay
+							currentMovies={currentMovies}
+							addToWatchlist={addToWatchlist}
+							removeFromWatchlist={removeFromWatchlist}
+						/>
+						:
+						<div className="no--movies">
+							<img
+								src={movieIcon}
+								alt="movie icon"
+							/>
+							<p className="dafault--text">Start Exploring</p>
+						</div>
 				}
+
+
+
+
 
 			</div>
 

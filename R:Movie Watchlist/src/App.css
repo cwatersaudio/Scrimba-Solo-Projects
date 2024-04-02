@@ -15,14 +15,18 @@ a {
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  background: #a5a5a533;
+  border-radius: 8px;
 }
 
 nav {
-  border: 2px blue solid;
+  border-radius: 8px;
+  z-index: 1;
   margin: 0;
   height: 227px;
   /* height: auto; */
-  background: url('./assets/image-36.png'), rgba(91, 84, 84, 0.244) 0px -158.291px / 100% 423.007% no-repeat;
+  background: url('./assets/image-36.png'), rgba(91, 84, 84, 0.82) 0px -158.291px / 100% 423.007% no-repeat;
 }
 
 .top--nav {
