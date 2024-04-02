@@ -12,11 +12,9 @@ const IntroPage = ({ params, handleParamsChange, getTrivia }) => {
                 handleParamsChange={handleParamsChange}
             />
 
-            <button
-                type="button"
-                className="quiz-button"
-                onClick={getTrivia}>Start quiz</button>
-        </div>)
+
+        </div>
+    )
 }
 
 export default IntroPage

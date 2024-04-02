@@ -9,7 +9,7 @@ const Dropdown = ({ dropDownChoices, title, id, onChange, value, className }) =>
 
     return (
         <>
-            <label for={id}>{title} </label>
+            <label htmlFor={id}>{title} </label>
             <select name={id} className={className} onChange={onChange} value={value}>
                 {generateOptions()}
             </select>

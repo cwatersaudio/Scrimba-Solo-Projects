@@ -1,7 +1,7 @@
 import React from 'react'
 import Dropdown from './Dropdown'
 
-const QuizParams = ({ handleParamsChange, params }) => {
+const QuizParams = ({ handleParamsChange, params, getTrivia }) => {
     const [quizTopics, setQuizTopics] = React.useState([])
 
 
@@ -36,7 +36,11 @@ const QuizParams = ({ handleParamsChange, params }) => {
 
 
     return (
-        <form className='quiz-params'>
+        <form className='quiz-params'
+            onSubmit={() => {
+                e.preventdefault()
+                getTrivia
+            }}>
             <div className='number-param param'>
                 <label htmlFor="numberOfQuestions">How many questions?</label>
 
@@ -60,6 +64,11 @@ const QuizParams = ({ handleParamsChange, params }) => {
                 dropDownChoices={quizTopics}
                 value={params.category.id}
             />
+            <button
+                type="submit"
+                className="quiz-button"
+            // onClick={getTrivia}
+            >Start quiz</button>
         </form>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Question from './Question'
 
 
@@ -6,13 +6,15 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
     const answers = []
     const [showAnswers, setShowAnswers] = React.useState(false)
     const [numberRight, setNumberRight] = React.useState(0)
+    let allAnswered = false
 
     function updateAnswer(ans, i) {
         answers[i] = ans
         console.log(answers)
+        if (answers.every(ans => ans !== null)) {
+            allAnswered = true
+        }
     }
-    //creates an array of answers to be passed to `checkAnswers`
-    //need an id of some kind for the answers to match them to triviaSet
 
     const questionsUI = triviaSet.map((item, index) => {
         const allChoices = [...item.options] //had to spread 'options' in otherwise allChoices was being equated to 'options'
@@ -38,7 +40,7 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
             setShowAnswers(true)
             getNumberRight(answers)
         } else {
-            setHiUnanswered(true)
+            alert('Please fill out all questions before checking answers')
             console.log('one of these is not filled out') //implement feature where it highlights missing question
         }
 
@@ -62,7 +64,9 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
         <div className="quiz-container">
             {questionsUI}
             {!showAnswers ?
-                <button type="button"
+                <button
+                    type="button"
+                    disabled={!allAnswered ? true : false}
                     className="quiz-button"
                     onClick={() => checkAnswers(answers)}>Check Answers
                 </button> :
