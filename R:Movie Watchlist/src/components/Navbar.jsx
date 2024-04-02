@@ -8,10 +8,10 @@ export default function Navbar(props) {
 		setSearchText(event.target.value)
 	}
 	return (
-		<nav class="navbar">
-			<div class="top--nav">
+		<nav className="navbar">
+			<div className="top--nav">
 				<h1>Find Your Film</h1>
-				<a href="">{props.buttonStatus === 'watchlist' ? `My Watchlist` : `Search for Movies`}</a>
+				<button onClick={props.toggleScreen}>{props.screen === 'watchlist' ? `My Watchlist` : `Search for Movies`}</button>
 			</div>
 			<div id="searchbar">
 				<input

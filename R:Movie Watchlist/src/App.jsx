@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import SearchDisplay from "./components/SearchDisplay";
 import movieIcon from "./assets/Icon.svg"
+import Watchlist from "./components/Watchlist";
 
 
 
@@ -10,7 +11,7 @@ import movieIcon from "./assets/Icon.svg"
 
 export default function App() {
 
-	const [buttonStatus, setButtonStatus] = React.useState("watchlist")
+	const [screen, setScreen] = React.useState("search")
 	const [currentMovies, setCurrentMovies] = React.useState([])
 	const [watchlist, setWatchlist] = React.useState([])
 	const [loading, setLoading] = React.useState(false)
@@ -88,6 +89,7 @@ export default function App() {
 				itemToAdd
 			]
 		})
+		console.log(watchlist)
 	}
 
 	function removeFromWatchlist(ID) {
@@ -97,6 +99,11 @@ export default function App() {
 		setWatchlist(newWatchlist)
 	}
 
+	function toggleScreen() {
+		setScreen(prevScreen => {
+			return prevScreen === "search" ? "watchlist" : "search"
+		})
+	}
 
 
 
@@ -108,31 +115,27 @@ export default function App() {
 	return (
 		<div className="app--container">
 			<Navbar
-				buttonStatus={buttonStatus}
+				screen={screen}
 				searchMovie={searchMovie}
+				toggleScreen={toggleScreen}
 			/>
 			<div className="movie--area">
-				<SearchDisplay
-					currentMovies={currentMovies}
-					addToWatchlist={addToWatchlist}
-					removeFromWatchlist={removeFromWatchlist}
-				/>
-
-				{loading ?
-					<div className="no--movies">
-						<img
-							src={movieIcon}
-							alt="movie icon"
-						/>
-						<p className="dafault--text">Loading...</p>
-					</div> :
-					(currentMovies.length > 0) ?
+				{screen === "search" ? (
+					loading ? (
+						<div className="no--movies">
+							<img
+								src={movieIcon}
+								alt="movie icon"
+							/>
+							<p className="dafault--text">Loading...</p>
+						</div>
+					) : currentMovies.length > 0 ? (
 						<SearchDisplay
 							currentMovies={currentMovies}
 							addToWatchlist={addToWatchlist}
 							removeFromWatchlist={removeFromWatchlist}
 						/>
-						:
+					) : (
 						<div className="no--movies">
 							<img
 								src={movieIcon}
@@ -140,16 +143,15 @@ export default function App() {
 							/>
 							<p className="dafault--text">Start Exploring</p>
 						</div>
-				}
-
-
-
-
-
+					)
+				) : screen === "watchlist" ? (
+					<Watchlist
+						watchlist={watchlist}
+						removeFromWatchlist={removeFromWatchlist} />
+				) : null}
 			</div>
-
-
-		</div >
+		</div>
 	);
+
 }
 

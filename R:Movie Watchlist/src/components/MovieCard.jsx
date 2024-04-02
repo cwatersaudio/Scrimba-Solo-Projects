@@ -34,7 +34,7 @@ export const MovieCard = (props) => {
 						}
 
 					</div>
-					<p className="description">${plot}</p>
+					<p className="description">{plot}</p>
 					{/* <a href="" class="read-more">Read more</a> */}
 				</div>
 			</div>
