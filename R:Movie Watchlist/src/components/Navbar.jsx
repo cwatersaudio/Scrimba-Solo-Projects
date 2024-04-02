@@ -10,7 +10,7 @@ export default function Navbar(props) {
 	return (
 		<nav className="navbar">
 			<div className="top--nav">
-				<h1>Find Your Film</h1>
+				{screen === "search" ? <h1>Find Your Film</h1> : <h1>Watchlist</h1>}
 				<button onClick={props.toggleScreen}>{props.screen === 'watchlist' ? `My Watchlist` : `Search for Movies`}</button>
 			</div>
 			<div id="searchbar">
