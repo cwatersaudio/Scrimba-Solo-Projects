@@ -6,14 +6,11 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
     const answers = []
     const [showAnswers, setShowAnswers] = React.useState(false)
     const [numberRight, setNumberRight] = React.useState(0)
-    let allAnswered = false
 
     function updateAnswer(ans, i) {
         answers[i] = ans
         console.log(answers)
-        if (answers.every(ans => ans !== null)) {
-            allAnswered = true
-        }
+
     }
 
     const questionsUI = triviaSet.map((item, index) => {
@@ -62,22 +59,25 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
 
     return (
         <div className="quiz-container">
-            {questionsUI}
-            {!showAnswers ?
-                <button
-                    type="button"
-                    disabled={!allAnswered ? true : false}
-                    className="quiz-button"
-                    onClick={() => checkAnswers(answers)}>Check Answers
-                </button> :
-                <div>
-                    <p>You got {numberRight}/{triviaSet.length} correct!</p>
-                    <button type="button"
+            <form action="">
+                {questionsUI}
+                {!showAnswers ?
+                    <button
+                        type="button"
                         className="quiz-button"
-                        onClick={restartGame}
-                    >Play Again
-                    </button>
-                </div>}
+                        onClick={() => checkAnswers(answers)}>Check Answers
+                    </button> :
+                    <div>
+                        <p>You got {numberRight}/{triviaSet.length} correct!</p>
+                        <button type="button"
+                            className="quiz-button"
+                            onClick={restartGame}
+                        >Play Again
+                        </button>
+                    </div>}
+
+            </form>
+
 
         </div >
 

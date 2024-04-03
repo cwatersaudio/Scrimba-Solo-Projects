@@ -45,6 +45,7 @@ const Options = ({ allChoices, number, correct, updateAnswer, showAnswers }) => 
                     <>
                         <input
                             type="radio"
+                            required
                             id={`choices${number},${index}`}
                             name={`choices${number}`}
                             value={option}

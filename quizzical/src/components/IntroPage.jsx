@@ -10,6 +10,7 @@ const IntroPage = ({ params, handleParamsChange, getTrivia }) => {
             <QuizParams
                 params={params}
                 handleParamsChange={handleParamsChange}
+                getTrivia={getTrivia}
             />
 
 

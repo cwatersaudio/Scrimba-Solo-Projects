@@ -37,10 +37,8 @@ const QuizParams = ({ handleParamsChange, params, getTrivia }) => {
 
     return (
         <form className='quiz-params'
-            onSubmit={() => {
-                e.preventdefault()
-                getTrivia
-            }}>
+        // onSubmit={getTrivia}
+        >
             <div className='number-param param'>
                 <label htmlFor="numberOfQuestions">How many questions?</label>
 
@@ -65,9 +63,9 @@ const QuizParams = ({ handleParamsChange, params, getTrivia }) => {
                 value={params.category.id}
             />
             <button
-                type="submit"
+                type="button"
                 className="quiz-button"
-            // onClick={getTrivia}
+                onClick={getTrivia}
             >Start quiz</button>
         </form>
     )
