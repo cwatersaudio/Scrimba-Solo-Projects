@@ -67,7 +67,7 @@ const QuizPage = ({ triviaSet, begun, restartGame }) => {
                         className="quiz-button"
                         onClick={() => checkAnswers(answers)}>Check Answers
                     </button> :
-                    <div>
+                    <div className='lower-button-container'>
                         <p>You got {numberRight}/{triviaSet.length} correct!</p>
                         <button type="button"
                             className="quiz-button"
