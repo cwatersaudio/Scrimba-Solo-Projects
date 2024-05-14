@@ -8,10 +8,8 @@ export default function SearchDisplay(props) {
 	const searchResults = currentMovies.map((mov) => {
 
 		return (<MovieCard
-			// key={index} //need an index here
+			key={mov.title}
 			movie={mov}
-		// addToWatchlist={addToWatchlist}
-		// removeFromWatchlist={removeFromWatchlist}
 		/>)
 
 	})

@@ -5,7 +5,7 @@ import { WatchlistContext } from "../App"
 
 export const MovieCard = ({ movie }) => {
 	const { title, poster, imdbRating, runtime, genre, plot, imdbID, onWatchlist } = movie
-	const { currentMovies, addToWatchlist, removeFromWatchlist, watchlist } = React.useContext(WatchlistContext)
+	const { addToWatchlist, removeFromWatchlist } = React.useContext(WatchlistContext)
 
 
 	return (

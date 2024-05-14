@@ -124,11 +124,7 @@ export default function App() {
 								<p className="dafault--text">Loading...</p>
 							</div>
 						) : currentMovies.length > 0 ? (
-							<SearchDisplay
-								currentMovies={currentMovies}
-							// addToWatchlist={addToWatchlist}
-							// removeFromWatchlist={removeFromWatchlist}
-							/>
+							<SearchDisplay currentMovies={currentMovies} />
 						) : (
 							<div className="no--movies">
 								<img
@@ -139,9 +135,7 @@ export default function App() {
 							</div>
 						)
 					) : screen === "watchlist" ? (
-						<Watchlist
-							watchlist={watchlist}
-							removeFromWatchlist={removeFromWatchlist} />
+						<Watchlist />
 					) : null}
 				</div>
 			</div>
