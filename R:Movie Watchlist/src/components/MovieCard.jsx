@@ -1,9 +1,11 @@
 import React from "react";
 import plus from "../assets/Plus.svg"
 import minus from "../assets/Minus.svg"
+import { WatchlistContext } from "../App"
 
-export const MovieCard = (props) => {
-	const { title, poster, imdbRating, runtime, genre, plot, imdbID, watchlist } = props.movie
+export const MovieCard = ({ movie }) => {
+	const { title, poster, imdbRating, runtime, genre, plot, imdbID, onWatchlist } = movie
+	const { currentMovies, addToWatchlist, removeFromWatchlist, watchlist } = React.useContext(WatchlistContext)
 
 
 	return (
@@ -18,17 +20,17 @@ export const MovieCard = (props) => {
 					<div className="movie--row stats">
 						<p>{runtime}</p>
 						<p>{genre}</p>
-						{!watchlist ? < img
+						{!onWatchlist ? < img
 							src={plus}
 							alt="add to watchlist button"
 							name="addToWatchlist"
-							onClick={() => { props.addToWatchlist(imdbID) }}
+							onClick={() => { addToWatchlist(imdbID) }}
 						/>
 							: <img
 								src={minus}
 								alt="remove to watchlist button"
 								name="removeFromWatchlist"
-								onClick={() => { props.removeFromWatchlist(imdbID) }}
+								onClick={() => { removeFromWatchlist(imdbID) }}
 							/>
 
 						}

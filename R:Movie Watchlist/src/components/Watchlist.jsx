@@ -1,16 +1,16 @@
 import React from "react";
-import { MovieCard } from "./MovieCard";
+import { MovieCard } from "./MovieCard"
+import { WatchlistContext } from "../App"
 
-//receives array of movie objects
 
-//function to map through array and make <MovieCard />
+export default function WatchlistDisplay(props) {
 
-export default function WatchlistDisplay({ watchlist, removeFromWatchlist }) {
+	const { watchlist, removeFromWatchlist } = React.useContext(WatchlistContext)
 
 	const watchlistUI = watchlist.map((mov) => {
 
 		return (<MovieCard
-			// key={index} //need an index here
+			key={mov.title} //need an index here
 			movie={mov}
 			removeFromWatchlist={removeFromWatchlist}
 		/>)
@@ -20,6 +20,6 @@ export default function WatchlistDisplay({ watchlist, removeFromWatchlist }) {
 
 
 	return <>
-		{watchlistUI}
+		{watchlist.length > 0 ? watchlistUI : <h1>Your watchlist is empty</h1>}
 	</>;
 }

@@ -7,7 +7,7 @@ import Watchlist from "./components/Watchlist";
 
 
 
-
+const WatchlistContext = React.createContext(null)
 
 export default function App() {
 
@@ -61,7 +61,7 @@ export default function App() {
 				genre: movData.Genre,
 				plot: movData.Plot,
 				imdbID: movData.imdbID,
-				watchlist: false
+				onWatchlist: false
 			}
 			fullMovieData.push(currentMovie)
 			console.log(currentMovie)
@@ -74,7 +74,7 @@ export default function App() {
 	function toggleWatchlist(ID) {
 		const indexToToggle = currentMovies.findIndex(item => item.imdbID === ID)
 		const newList = [...currentMovies]
-		newList[indexToToggle].watchlist = !newList[indexToToggle].watchlist
+		newList[indexToToggle].onWatchlist = !newList[indexToToggle].onWatchlist
 		setCurrentMovies(newList)
 
 	}
@@ -105,53 +105,50 @@ export default function App() {
 		})
 	}
 
-
-
-
-
-
-
-
 	return (
-		<div className="app--container">
-			<Navbar
-				screen={screen}
-				searchMovie={searchMovie}
-				toggleScreen={toggleScreen}
-			/>
-			<div className="movie--area">
-				{screen === "search" ? (
-					loading ? (
-						<div className="no--movies">
-							<img
-								src={movieIcon}
-								alt="movie icon"
+		<WatchlistContext.Provider value={{ addToWatchlist, removeFromWatchlist, watchlist, currentMovies }}>
+			<div className="app--container">
+				<Navbar
+					screen={screen}
+					searchMovie={searchMovie}
+					toggleScreen={toggleScreen}
+				/>
+				<div className="movie--area">
+					{screen === "search" ? (
+						loading ? (
+							<div className="no--movies">
+								<img
+									src={movieIcon}
+									alt="movie icon"
+								/>
+								<p className="dafault--text">Loading...</p>
+							</div>
+						) : currentMovies.length > 0 ? (
+							<SearchDisplay
+								currentMovies={currentMovies}
+							// addToWatchlist={addToWatchlist}
+							// removeFromWatchlist={removeFromWatchlist}
 							/>
-							<p className="dafault--text">Loading...</p>
-						</div>
-					) : currentMovies.length > 0 ? (
-						<SearchDisplay
-							currentMovies={currentMovies}
-							addToWatchlist={addToWatchlist}
-							removeFromWatchlist={removeFromWatchlist}
-						/>
-					) : (
-						<div className="no--movies">
-							<img
-								src={movieIcon}
-								alt="movie icon"
-							/>
-							<p className="dafault--text">Start Exploring</p>
-						</div>
-					)
-				) : screen === "watchlist" ? (
-					<Watchlist
-						watchlist={watchlist}
-						removeFromWatchlist={removeFromWatchlist} />
-				) : null}
+						) : (
+							<div className="no--movies">
+								<img
+									src={movieIcon}
+									alt="movie icon"
+								/>
+								<p className="dafault--text">Start Exploring</p>
+							</div>
+						)
+					) : screen === "watchlist" ? (
+						<Watchlist
+							watchlist={watchlist}
+							removeFromWatchlist={removeFromWatchlist} />
+					) : null}
+				</div>
 			</div>
-		</div>
+		</WatchlistContext.Provider>
 	);
 
 }
+
+export { WatchlistContext }
 
